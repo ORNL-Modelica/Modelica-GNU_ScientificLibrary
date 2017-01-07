@@ -1,6 +1,6 @@
 within GNU_ScientificLibrary;
 package Icons "Additional icons not contained in Modelica.Icons"
-  extends IconsPackage;
+  extends Icons.IconsPackage;
 
 
 
