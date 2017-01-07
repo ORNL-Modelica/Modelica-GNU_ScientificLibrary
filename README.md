@@ -2,6 +2,10 @@
 
 Free library for accessing the GNU Scientific Library functions via Modelica.
 
+## Supported Simulation Environments
+
+Currently tested using Dymola 2017 FD01.
+
 ## License
 
 This Modelica package is free software and the use is completely at your own risk;
