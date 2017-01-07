@@ -1,5 +1,5 @@
 within GNU_ScientificLibrary.Models.BaseClasses;
-model PartialBessel
+partial model PartialBessel
   extends Modelica.Blocks.Interfaces.SO;
 
   parameter Integer n = 0 "Order of the Bessel function";
