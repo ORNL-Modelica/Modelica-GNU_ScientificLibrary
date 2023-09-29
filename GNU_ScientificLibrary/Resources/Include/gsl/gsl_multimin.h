@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -72,8 +72,8 @@ typedef struct gsl_multimin_function_fdf_struct gsl_multimin_function_fdf;
 #define GSL_MULTIMIN_FN_EVAL_DF(F,x,g) (*((F)->df))(x,(F)->params,(g))
 #define GSL_MULTIMIN_FN_EVAL_F_DF(F,x,y,g) (*((F)->fdf))(x,(F)->params,(y),(g))
 
-GSL_EXPORT int gsl_multimin_diff (const gsl_multimin_function * f,
-                                  const gsl_vector * x, gsl_vector * g);
+int gsl_multimin_diff (const gsl_multimin_function * f,
+                       const gsl_vector * x, gsl_vector * g);
 
 /* minimization of non-differentiable functions */
 
@@ -109,71 +109,61 @@ typedef struct
 }
 gsl_multimin_fminimizer;
 
-GSL_EXPORT
 gsl_multimin_fminimizer *
 gsl_multimin_fminimizer_alloc(const gsl_multimin_fminimizer_type *T,
                               size_t n);
 
-GSL_EXPORT
-int
+int 
 gsl_multimin_fminimizer_set (gsl_multimin_fminimizer * s,
                              gsl_multimin_function * f,
                              const gsl_vector * x,
                              const gsl_vector * step_size);
 
-GSL_EXPORT
 void
 gsl_multimin_fminimizer_free(gsl_multimin_fminimizer *s);
 
-GSL_EXPORT
-const char *
+const char * 
 gsl_multimin_fminimizer_name (const gsl_multimin_fminimizer * s);
 
-GSL_EXPORT
 int
 gsl_multimin_fminimizer_iterate(gsl_multimin_fminimizer *s);
 
-GSL_EXPORT
-gsl_vector *
+gsl_vector * 
 gsl_multimin_fminimizer_x (const gsl_multimin_fminimizer * s);
 
-GSL_EXPORT
-double
+double 
 gsl_multimin_fminimizer_minimum (const gsl_multimin_fminimizer * s);
 
-GSL_EXPORT
 double
 gsl_multimin_fminimizer_size (const gsl_multimin_fminimizer * s);
 
 /* Convergence test functions */
 
-GSL_EXPORT
 int
-gsl_multimin_test_gradient(const gsl_vector * g,double epsabs);
+gsl_multimin_test_gradient(const gsl_vector * g, double epsabs);
 
-GSL_EXPORT
 int
-gsl_multimin_test_size(const double size ,double epsabs);
+gsl_multimin_test_size(const double size, double epsabs);
 
 /* minimisation of differentiable functions */
 
-typedef struct
+typedef struct 
 {
   const char *name;
   size_t size;
   int (*alloc) (void *state, size_t n);
   int (*set) (void *state, gsl_multimin_function_fdf * fdf,
-              const gsl_vector * x, double * f,
+              const gsl_vector * x, double * f, 
               gsl_vector * gradient, double step_size, double tol);
-  int (*iterate) (void *state,gsl_multimin_function_fdf * fdf,
-                  gsl_vector * x, double * f,
+  int (*iterate) (void *state,gsl_multimin_function_fdf * fdf, 
+                  gsl_vector * x, double * f, 
                   gsl_vector * gradient, gsl_vector * dx);
   int (*restart) (void *state);
   void (*free) (void *state);
 }
 gsl_multimin_fdfminimizer_type;
 
-typedef struct
+typedef struct 
 {
   /* multi dimensional part */
   const gsl_multimin_fdfminimizer_type *type;
@@ -188,56 +178,48 @@ typedef struct
 }
 gsl_multimin_fdfminimizer;
 
-GSL_EXPORT
 gsl_multimin_fdfminimizer *
 gsl_multimin_fdfminimizer_alloc(const gsl_multimin_fdfminimizer_type *T,
                                 size_t n);
 
-GSL_EXPORT
-int
+int 
 gsl_multimin_fdfminimizer_set (gsl_multimin_fdfminimizer * s,
                                gsl_multimin_function_fdf *fdf,
                                const gsl_vector * x,
                                double step_size, double tol);
 
-GSL_EXPORT
 void
 gsl_multimin_fdfminimizer_free(gsl_multimin_fdfminimizer *s);
 
-GSL_EXPORT
-const char *
+const char * 
 gsl_multimin_fdfminimizer_name (const gsl_multimin_fdfminimizer * s);
 
-GSL_EXPORT
 int
 gsl_multimin_fdfminimizer_iterate(gsl_multimin_fdfminimizer *s);
 
-GSL_EXPORT
 int
 gsl_multimin_fdfminimizer_restart(gsl_multimin_fdfminimizer *s);
 
-GSL_EXPORT
-gsl_vector *
-gsl_multimin_fdfminimizer_x (gsl_multimin_fdfminimizer * s);
+gsl_vector * 
+gsl_multimin_fdfminimizer_x (const gsl_multimin_fdfminimizer * s);
 
-GSL_EXPORT
-gsl_vector *
-gsl_multimin_fdfminimizer_dx (gsl_multimin_fdfminimizer * s);
+gsl_vector * 
+gsl_multimin_fdfminimizer_dx (const gsl_multimin_fdfminimizer * s);
 
-GSL_EXPORT
-gsl_vector *
-gsl_multimin_fdfminimizer_gradient (gsl_multimin_fdfminimizer * s);
+gsl_vector * 
+gsl_multimin_fdfminimizer_gradient (const gsl_multimin_fdfminimizer * s);
 
-GSL_EXPORT
-double
-gsl_multimin_fdfminimizer_minimum (gsl_multimin_fdfminimizer * s);
+double 
+gsl_multimin_fdfminimizer_minimum (const gsl_multimin_fdfminimizer * s);
 
 GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_steepest_descent;
 GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_conjugate_pr;
 GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_conjugate_fr;
 GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_vector_bfgs;
+GSL_VAR const gsl_multimin_fdfminimizer_type *gsl_multimin_fdfminimizer_vector_bfgs2;
 GSL_VAR const gsl_multimin_fminimizer_type *gsl_multimin_fminimizer_nmsimplex;
-
+GSL_VAR const gsl_multimin_fminimizer_type *gsl_multimin_fminimizer_nmsimplex2;
+GSL_VAR const gsl_multimin_fminimizer_type *gsl_multimin_fminimizer_nmsimplex2rand;
 
 __END_DECLS
 

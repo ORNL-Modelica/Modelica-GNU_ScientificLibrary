@@ -1,10 +1,11 @@
 /* monte/gsl_monte_vegas.h
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 Michael Booth
+ * Copyright (C) 2009 Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -22,9 +23,9 @@
 #ifndef __GSL_MONTE_VEGAS_H__
 #define __GSL_MONTE_VEGAS_H__
 
+#include <stdlib.h>
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_monte.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -87,18 +88,36 @@ typedef struct {
 
 } gsl_monte_vegas_state;
 
-GSL_EXPORT int gsl_monte_vegas_integrate(gsl_monte_function * f,
-                                         double xl[], double xu[],
-                                         size_t dim, size_t calls,
-                                         gsl_rng * r,
-                                         gsl_monte_vegas_state *state,
-                                         double* result, double* abserr);
+int gsl_monte_vegas_integrate(gsl_monte_function * f, 
+                              double xl[], double xu[], 
+                              size_t dim, size_t calls,
+                              gsl_rng * r,
+                              gsl_monte_vegas_state *state,
+                              double* result, double* abserr);
 
-GSL_EXPORT gsl_monte_vegas_state* gsl_monte_vegas_alloc(size_t dim);
+gsl_monte_vegas_state* gsl_monte_vegas_alloc(size_t dim);
 
-GSL_EXPORT int gsl_monte_vegas_init(gsl_monte_vegas_state* state);
+int gsl_monte_vegas_init(gsl_monte_vegas_state* state);
 
-GSL_EXPORT void gsl_monte_vegas_free (gsl_monte_vegas_state* state);
+void gsl_monte_vegas_free (gsl_monte_vegas_state* state);
+
+double gsl_monte_vegas_chisq (const gsl_monte_vegas_state* state);
+void gsl_monte_vegas_runval (const gsl_monte_vegas_state* state, double * result, double * sigma);
+
+typedef struct {
+  double alpha;
+  size_t iterations;
+  int stage;
+  int mode;
+  int verbose;
+  FILE * ostream;
+} gsl_monte_vegas_params;
+
+void gsl_monte_vegas_params_get (const gsl_monte_vegas_state * state,
+				 gsl_monte_vegas_params * params);
+
+void gsl_monte_vegas_params_set (gsl_monte_vegas_state * state,
+				 const gsl_monte_vegas_params * params);
 
 __END_DECLS
 

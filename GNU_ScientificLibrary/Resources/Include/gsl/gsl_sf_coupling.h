@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_COUPLING_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -43,13 +42,13 @@ __BEGIN_DECLS
  *
  * exceptions: GSL_EDOM, GSL_EOVRFLW
  */
-GSL_EXPORT int gsl_sf_coupling_3j_e(int two_ja, int two_jb, int two_jc,
-                                    int two_ma, int two_mb, int two_mc,
-                                    gsl_sf_result * result
-                                    );
-GSL_EXPORT double gsl_sf_coupling_3j(int two_ja, int two_jb, int two_jc,
-                                     int two_ma, int two_mb, int two_mc
-                                     );
+int gsl_sf_coupling_3j_e(int two_ja, int two_jb, int two_jc,
+                            int two_ma, int two_mb, int two_mc,
+                            gsl_sf_result * result
+                            );
+double gsl_sf_coupling_3j(int two_ja, int two_jb, int two_jc,
+                          int two_ma, int two_mb, int two_mc
+                          );
 
 
 /* 6j Symbols:  / ja jb jc \
@@ -57,13 +56,13 @@ GSL_EXPORT double gsl_sf_coupling_3j(int two_ja, int two_jb, int two_jc,
  *
  * exceptions: GSL_EDOM, GSL_EOVRFLW
  */
-GSL_EXPORT int gsl_sf_coupling_6j_e(int two_ja, int two_jb, int two_jc,
-                                    int two_jd, int two_je, int two_jf,
-                                    gsl_sf_result * result
-                                    );
-GSL_EXPORT double gsl_sf_coupling_6j(int two_ja, int two_jb, int two_jc,
-                                     int two_jd, int two_je, int two_jf
-                                     );
+int gsl_sf_coupling_6j_e(int two_ja, int two_jb, int two_jc,
+                         int two_jd, int two_je, int two_jf,
+                         gsl_sf_result * result
+                         );
+double gsl_sf_coupling_6j(int two_ja, int two_jb, int two_jc,
+                          int two_jd, int two_je, int two_jf
+                          );
 
 /* Racah W coefficients:
  *
@@ -72,13 +71,13 @@ GSL_EXPORT double gsl_sf_coupling_6j(int two_ja, int two_jb, int two_jc,
  *
  * exceptions: GSL_EDOM, GSL_EOVRFLW
  */
-GSL_EXPORT int gsl_sf_coupling_RacahW_e(int two_ja, int two_jb, int two_jc,
-                                        int two_jd, int two_je, int two_jf,
-                                        gsl_sf_result * result
-                                        );
-GSL_EXPORT double gsl_sf_coupling_RacahW(int two_ja, int two_jb, int two_jc,
-                                         int two_jd, int two_je, int two_jf
-                                         );
+int gsl_sf_coupling_RacahW_e(int two_ja, int two_jb, int two_jc,
+                             int two_jd, int two_je, int two_jf,
+                             gsl_sf_result * result
+                             );
+double gsl_sf_coupling_RacahW(int two_ja, int two_jb, int two_jc,
+                              int two_jd, int two_je, int two_jf
+                              );
 
 
 /* 9j Symbols:  / ja jb jc \
@@ -87,15 +86,15 @@ GSL_EXPORT double gsl_sf_coupling_RacahW(int two_ja, int two_jb, int two_jc,
  *
  * exceptions: GSL_EDOM, GSL_EOVRFLW
  */
-GSL_EXPORT int gsl_sf_coupling_9j_e(int two_ja, int two_jb, int two_jc,
-                                    int two_jd, int two_je, int two_jf,
-                                    int two_jg, int two_jh, int two_ji,
-                                    gsl_sf_result * result
-                                    );
-GSL_EXPORT double gsl_sf_coupling_9j(int two_ja, int two_jb, int two_jc,
-                                     int two_jd, int two_je, int two_jf,
-                                     int two_jg, int two_jh, int two_ji
-                                     );
+int gsl_sf_coupling_9j_e(int two_ja, int two_jb, int two_jc,
+                         int two_jd, int two_je, int two_jf,
+                         int two_jg, int two_jh, int two_ji,
+                         gsl_sf_result * result
+                         );
+double gsl_sf_coupling_9j(int two_ja, int two_jb, int two_jc,
+                          int two_jd, int two_je, int two_jf,
+                          int two_jg, int two_jh, int two_ji
+                          );
 
 
 /* INCORRECT version of 6j Symbols:
@@ -111,13 +110,13 @@ GSL_EXPORT double gsl_sf_coupling_9j(int two_ja, int two_jb, int two_jc,
  * exceptions: GSL_EDOM, GSL_EOVRFLW
  */
 #ifndef GSL_DISABLE_DEPRECATED
-GSL_EXPORT int gsl_sf_coupling_6j_INCORRECT_e(int two_ja, int two_jb, int two_jc,
-                                              int two_jd, int two_je, int two_jf,
-                                              gsl_sf_result * result
-                                              );
-GSL_EXPORT double gsl_sf_coupling_6j_INCORRECT(int two_ja, int two_jb, int two_jc,
-                                               int two_jd, int two_je, int two_jf
-                                               );
+int gsl_sf_coupling_6j_INCORRECT_e(int two_ja, int two_jb, int two_jc,
+                                   int two_jd, int two_je, int two_jf,
+                                   gsl_sf_result * result
+                                   );
+double gsl_sf_coupling_6j_INCORRECT(int two_ja, int two_jb, int two_jc,
+                                    int two_jd, int two_je, int two_jf
+                                    );
 #endif /* !GSL_DISABLE_DEPRECATED */
 
 

@@ -1,10 +1,10 @@
 /* rng/gsl_rng.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004 James Theiler, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2004, 2007 James Theiler, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <gsl/gsl_types.h>
 #include <gsl/gsl_errno.h>
+#include <gsl/gsl_inline.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -67,6 +68,7 @@ GSL_VAR const gsl_rng_type *gsl_rng_fishman2x;
 GSL_VAR const gsl_rng_type *gsl_rng_gfsr4;
 GSL_VAR const gsl_rng_type *gsl_rng_knuthran;
 GSL_VAR const gsl_rng_type *gsl_rng_knuthran2;
+GSL_VAR const gsl_rng_type *gsl_rng_knuthran2002;
 GSL_VAR const gsl_rng_type *gsl_rng_lecuyer21;
 GSL_VAR const gsl_rng_type *gsl_rng_minstd;
 GSL_VAR const gsl_rng_type *gsl_rng_mrg;
@@ -120,58 +122,52 @@ GSL_VAR const gsl_rng_type *gsl_rng_vax;
 GSL_VAR const gsl_rng_type *gsl_rng_waterman14;
 GSL_VAR const gsl_rng_type *gsl_rng_zuf;
 
-GSL_EXPORT const gsl_rng_type ** gsl_rng_types_setup(void);
+const gsl_rng_type ** gsl_rng_types_setup(void);
 
 GSL_VAR const gsl_rng_type *gsl_rng_default;
 GSL_VAR unsigned long int gsl_rng_default_seed;
 
-GSL_EXPORT gsl_rng *gsl_rng_alloc (const gsl_rng_type * T);
-GSL_EXPORT int gsl_rng_memcpy (gsl_rng * dest, const gsl_rng * src);
-GSL_EXPORT gsl_rng *gsl_rng_clone (const gsl_rng * r);
+gsl_rng *gsl_rng_alloc (const gsl_rng_type * T);
+int gsl_rng_memcpy (gsl_rng * dest, const gsl_rng * src);
+gsl_rng *gsl_rng_clone (const gsl_rng * r);
 
-GSL_EXPORT void gsl_rng_free (gsl_rng * r);
+void gsl_rng_free (gsl_rng * r);
 
-GSL_EXPORT void gsl_rng_set (const gsl_rng * r, unsigned long int seed);
-GSL_EXPORT unsigned long int gsl_rng_max (const gsl_rng * r);
-GSL_EXPORT unsigned long int gsl_rng_min (const gsl_rng * r);
-GSL_EXPORT const char *gsl_rng_name (const gsl_rng * r);
+void gsl_rng_set (const gsl_rng * r, unsigned long int seed);
+unsigned long int gsl_rng_max (const gsl_rng * r);
+unsigned long int gsl_rng_min (const gsl_rng * r);
+const char *gsl_rng_name (const gsl_rng * r);
 
-GSL_EXPORT int gsl_rng_fread (FILE * stream, gsl_rng * r);
-GSL_EXPORT int gsl_rng_fwrite (FILE * stream, const gsl_rng * r);
+int gsl_rng_fread (FILE * stream, gsl_rng * r);
+int gsl_rng_fwrite (FILE * stream, const gsl_rng * r);
 
-GSL_EXPORT size_t gsl_rng_size (const gsl_rng * r);
-GSL_EXPORT void * gsl_rng_state (const gsl_rng * r);
+size_t gsl_rng_size (const gsl_rng * r);
+void * gsl_rng_state (const gsl_rng * r);
 
-GSL_EXPORT void gsl_rng_print_state (const gsl_rng * r);
+void gsl_rng_print_state (const gsl_rng * r);
 
-GSL_EXPORT const gsl_rng_type * gsl_rng_env_setup (void);
+const gsl_rng_type * gsl_rng_env_setup (void);
 
-GSL_EXPORT unsigned long int gsl_rng_get (const gsl_rng * r);
-GSL_EXPORT double gsl_rng_uniform (const gsl_rng * r);
-GSL_EXPORT double gsl_rng_uniform_pos (const gsl_rng * r);
-GSL_EXPORT unsigned long int gsl_rng_uniform_int (const gsl_rng * r, unsigned long int n);
-
+INLINE_DECL unsigned long int gsl_rng_get (const gsl_rng * r);
+INLINE_DECL double gsl_rng_uniform (const gsl_rng * r);
+INLINE_DECL double gsl_rng_uniform_pos (const gsl_rng * r);
+INLINE_DECL unsigned long int gsl_rng_uniform_int (const gsl_rng * r, unsigned long int n);
 
 #ifdef HAVE_INLINE
-extern inline unsigned long int gsl_rng_get (const gsl_rng * r);
 
-extern inline unsigned long int
+INLINE_FUN unsigned long int
 gsl_rng_get (const gsl_rng * r)
 {
   return (r->type->get) (r->state);
 }
 
-extern inline double gsl_rng_uniform (const gsl_rng * r);
-
-extern inline double
+INLINE_FUN double
 gsl_rng_uniform (const gsl_rng * r)
 {
   return (r->type->get_double) (r->state);
 }
 
-extern inline double gsl_rng_uniform_pos (const gsl_rng * r);
-
-extern inline double
+INLINE_FUN double
 gsl_rng_uniform_pos (const gsl_rng * r)
 {
   double x ;
@@ -184,9 +180,13 @@ gsl_rng_uniform_pos (const gsl_rng * r)
   return x ;
 }
 
-extern inline unsigned long int gsl_rng_uniform_int (const gsl_rng * r, unsigned long int n);
+/* Note: to avoid integer overflow in (range+1) we work with scale =
+   range/n = (max-min)/n rather than scale=(max-min+1)/n, this reduces
+   efficiency slightly but avoids having to check for the out of range
+   value.  Note that range is typically O(2^32) so the addition of 1
+   is negligible in most usage. */
 
-extern inline unsigned long int
+INLINE_FUN unsigned long int
 gsl_rng_uniform_int (const gsl_rng * r, unsigned long int n)
 {
   unsigned long int offset = r->type->min;

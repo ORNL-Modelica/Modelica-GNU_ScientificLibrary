@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -24,7 +24,6 @@
 
 #include <gsl/gsl_mode.h>
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -46,11 +45,17 @@ __BEGIN_DECLS
  *
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int gsl_sf_ellint_Kcomp_e(double k, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_Kcomp(double k, gsl_mode_t mode);
+int gsl_sf_ellint_Kcomp_e(double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_Kcomp(double k, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_Ecomp_e(double k, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_Ecomp(double k, gsl_mode_t mode);
+int gsl_sf_ellint_Ecomp_e(double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_Ecomp(double k, gsl_mode_t mode);
+
+int gsl_sf_ellint_Pcomp_e(double k, double n, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_Pcomp(double k, double n, gsl_mode_t mode);
+
+int gsl_sf_ellint_Dcomp_e(double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_Dcomp(double k, gsl_mode_t mode);
 
 
 /* Legendre form of incomplete elliptic integrals
@@ -67,17 +72,17 @@ GSL_EXPORT double gsl_sf_ellint_Ecomp(double k, gsl_mode_t mode);
  *
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int gsl_sf_ellint_F_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_F(double phi, double k, gsl_mode_t mode);
+int gsl_sf_ellint_F_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_F(double phi, double k, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_E_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_E(double phi, double k, gsl_mode_t mode);
+int gsl_sf_ellint_E_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_E(double phi, double k, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_P_e(double phi, double k, double n, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_P(double phi, double k, double n, gsl_mode_t mode);
+int gsl_sf_ellint_P_e(double phi, double k, double n, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_P(double phi, double k, double n, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_D_e(double phi, double k, double n, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_D(double phi, double k, double n, gsl_mode_t mode);
+int gsl_sf_ellint_D_e(double phi, double k, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_D(double phi, double k, gsl_mode_t mode);
 
 
 /* Carlson's symmetric basis of functions
@@ -89,17 +94,17 @@ GSL_EXPORT double gsl_sf_ellint_D(double phi, double k, double n, gsl_mode_t mod
  *
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int gsl_sf_ellint_RC_e(double x, double y, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_RC(double x, double y, gsl_mode_t mode);
+int gsl_sf_ellint_RC_e(double x, double y, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_RC(double x, double y, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_RD_e(double x, double y, double z, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_RD(double x, double y, double z, gsl_mode_t mode);
+int gsl_sf_ellint_RD_e(double x, double y, double z, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_RD(double x, double y, double z, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_RF_e(double x, double y, double z, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_RF(double x, double y, double z, gsl_mode_t mode);
+int gsl_sf_ellint_RF_e(double x, double y, double z, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_RF(double x, double y, double z, gsl_mode_t mode);
 
-GSL_EXPORT int gsl_sf_ellint_RJ_e(double x, double y, double z, double p, gsl_mode_t mode, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_ellint_RJ(double x, double y, double z, double p, gsl_mode_t mode);
+int gsl_sf_ellint_RJ_e(double x, double y, double z, double p, gsl_mode_t mode, gsl_sf_result * result);
+double gsl_sf_ellint_RJ(double x, double y, double z, double p, gsl_mode_t mode);
 
 
 __END_DECLS

@@ -1,10 +1,10 @@
 /* block/gsl_block_char.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -22,7 +22,6 @@
 
 #include <stdlib.h>
 #include <gsl/gsl_errno.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -44,22 +43,22 @@ struct gsl_block_char_struct
 
 typedef struct gsl_block_char_struct gsl_block_char;
 
-GSL_EXPORT gsl_block_char *gsl_block_char_alloc (const size_t n);
-GSL_EXPORT gsl_block_char *gsl_block_char_calloc (const size_t n);
-GSL_EXPORT void gsl_block_char_free (gsl_block_char * b);
+gsl_block_char *gsl_block_char_alloc (const size_t n);
+gsl_block_char *gsl_block_char_calloc (const size_t n);
+void gsl_block_char_free (gsl_block_char * b);
 
-GSL_EXPORT int gsl_block_char_fread (FILE * stream, gsl_block_char * b);
-GSL_EXPORT int gsl_block_char_fwrite (FILE * stream, const gsl_block_char * b);
-GSL_EXPORT int gsl_block_char_fscanf (FILE * stream, gsl_block_char * b);
-GSL_EXPORT int gsl_block_char_fprintf (FILE * stream, const gsl_block_char * b, const char *format);
+int gsl_block_char_fread (FILE * stream, gsl_block_char * b);
+int gsl_block_char_fwrite (FILE * stream, const gsl_block_char * b);
+int gsl_block_char_fscanf (FILE * stream, gsl_block_char * b);
+int gsl_block_char_fprintf (FILE * stream, const gsl_block_char * b, const char *format);
 
-GSL_EXPORT int gsl_block_char_raw_fread (FILE * stream, char * b, const size_t n, const size_t stride);
-GSL_EXPORT int gsl_block_char_raw_fwrite (FILE * stream, const char * b, const size_t n, const size_t stride);
-GSL_EXPORT int gsl_block_char_raw_fscanf (FILE * stream, char * b, const size_t n, const size_t stride);
-GSL_EXPORT int gsl_block_char_raw_fprintf (FILE * stream, const char * b, const size_t n, const size_t stride, const char *format);
+int gsl_block_char_raw_fread (FILE * stream, char * b, const size_t n, const size_t stride);
+int gsl_block_char_raw_fwrite (FILE * stream, const char * b, const size_t n, const size_t stride);
+int gsl_block_char_raw_fscanf (FILE * stream, char * b, const size_t n, const size_t stride);
+int gsl_block_char_raw_fprintf (FILE * stream, const char * b, const size_t n, const size_t stride, const char *format);
 
-GSL_EXPORT size_t gsl_block_char_size (const gsl_block_char * b);
-GSL_EXPORT char * gsl_block_char_data (const gsl_block_char * b);
+size_t gsl_block_char_size (const gsl_block_char * b);
+char * gsl_block_char_data (const gsl_block_char * b);
 
 __END_DECLS
 

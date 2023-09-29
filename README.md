@@ -4,7 +4,8 @@ Free library for accessing the GNU Scientific Library functions via Modelica.
 
 ## Supported Simulation Environments
 
-Currently tested using Dymola 2017 FD01.
+Currently tested with OpenModelica 1.21.0.
+(Previous version using Dymola 2017 FD01.)
 
 ## License
 

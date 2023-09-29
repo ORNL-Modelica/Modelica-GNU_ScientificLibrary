@@ -1,10 +1,10 @@
 /* sort/gsl_sort_int.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Thomas Walter, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #include <stdlib.h>
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_permutation.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -37,14 +36,15 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT void gsl_sort_int (int * data, const size_t stride, const size_t n);
-GSL_EXPORT void gsl_sort_int_index (size_t * p, const int * data, const size_t stride, const size_t n);
+void gsl_sort_int (int * data, const size_t stride, const size_t n);
+void gsl_sort2_int (int * data1, const size_t stride1, int * data2, const size_t stride2, const size_t n);
+void gsl_sort_int_index (size_t * p, const int * data, const size_t stride, const size_t n);
 
-GSL_EXPORT int gsl_sort_int_smallest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
-GSL_EXPORT int gsl_sort_int_smallest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_smallest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_smallest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
 
-GSL_EXPORT int gsl_sort_int_largest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
-GSL_EXPORT int gsl_sort_int_largest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_largest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_largest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
 
 __END_DECLS
 

@@ -1,10 +1,10 @@
 /* fit/gsl_fit.h
  * 
- * Copyright (C) 2000 Brian Gough
+ * Copyright (C) 2000, 2007 Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -22,7 +22,6 @@
 
 #include <stdlib.h>
 #include <gsl/gsl_math.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -36,50 +35,49 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT int gsl_fit_linear (const double * x, const size_t xstride,
-                               const double * y, const size_t ystride,
-                               const size_t n,
-                               double * c0, double * c1,
-                               double * cov00, double * cov01, double * cov11,
-                               double * sumsq);
+int gsl_fit_linear (const double * x, const size_t xstride,
+                    const double * y, const size_t ystride,
+                    const size_t n,
+                    double * c0, double * c1, 
+                    double * cov00, double * cov01, double * cov11, 
+                    double * sumsq);
 
 
-GSL_EXPORT int gsl_fit_wlinear (const double * x, const size_t xstride,
-                                const double * w, const size_t wstride,
-                                const double * y, const size_t ystride,
-                                const size_t n,
-                                double * c0, double * c1,
-                                double * cov00, double * cov01, double * cov11,
-                                double * chisq);
-  
-GSL_EXPORT
+int gsl_fit_wlinear (const double * x, const size_t xstride,
+                     const double * w, const size_t wstride,
+                     const double * y, const size_t ystride,
+                     const size_t n,
+                     double * c0, double * c1, 
+                     double * cov00, double * cov01, double * cov11, 
+                     double * chisq);
+
 int
-gsl_fit_linear_est (const double x,
-                    const double c0, const double c1,
-                    const double c00, const double c01, const double c11,
+gsl_fit_linear_est (const double x, 
+                    const double c0, const double c1, 
+                    const double cov00, const double cov01, const double cov11,
                     double *y, double *y_err);
 
 
-GSL_EXPORT int gsl_fit_mul (const double * x, const size_t xstride,
-                            const double * y, const size_t ystride,
-                            const size_t n,
-                            double * c1,
-                            double * cov11,
-                            double * sumsq);
+int gsl_fit_mul (const double * x, const size_t xstride,
+                 const double * y, const size_t ystride,
+                 const size_t n,
+                 double * c1, 
+                 double * cov11, 
+                 double * sumsq);
 
-GSL_EXPORT int gsl_fit_wmul (const double * x, const size_t xstride,
-                             const double * w, const size_t wstride,
-                             const double * y, const size_t ystride,
-                             const size_t n,
-                             double * c1,
-                             double * cov11,
-                             double * sumsq);
+int gsl_fit_wmul (const double * x, const size_t xstride,
+                  const double * w, const size_t wstride,
+                  const double * y, const size_t ystride,
+                  const size_t n,
+                  double * c1, 
+                  double * cov11, 
+                  double * sumsq);
 
-GSL_EXPORT
+
 int
-gsl_fit_mul_est (const double x,
-                 const double c1,
-                 const double c11,
+gsl_fit_mul_est (const double x, 
+                 const double c1, 
+                 const double cov11,
                  double *y, double *y_err);
 
 __END_DECLS

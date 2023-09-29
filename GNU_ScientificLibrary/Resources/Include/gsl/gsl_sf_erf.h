@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_ERF_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -43,16 +42,16 @@ __BEGIN_DECLS
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_erfc_e(double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_erfc(double x);
+int gsl_sf_erfc_e(double x, gsl_sf_result * result);
+double gsl_sf_erfc(double x);
 
 
 /* Log Complementary Error Function
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_log_erfc_e(double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_log_erfc(double x);
+int gsl_sf_log_erfc_e(double x, gsl_sf_result * result);
+double gsl_sf_log_erfc(double x);
 
 
 /* Error Function
@@ -60,8 +59,8 @@ GSL_EXPORT double gsl_sf_log_erfc(double x);
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_erf_e(double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_erf(double x);
+int gsl_sf_erf_e(double x, gsl_sf_result * result);
+double gsl_sf_erf(double x);
 
 
 /* Probability functions:
@@ -70,10 +69,10 @@ GSL_EXPORT double gsl_sf_erf(double x);
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_erf_Z_e(double x, gsl_sf_result * result);
-GSL_EXPORT int gsl_sf_erf_Q_e(double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_erf_Z(double x);
-GSL_EXPORT double gsl_sf_erf_Q(double x);
+int gsl_sf_erf_Z_e(double x, gsl_sf_result * result);
+int gsl_sf_erf_Q_e(double x, gsl_sf_result * result);
+double gsl_sf_erf_Z(double x);
+double gsl_sf_erf_Q(double x);
 
 
 /* Hazard function, also known as the inverse Mill's ratio.
@@ -83,8 +82,8 @@ GSL_EXPORT double gsl_sf_erf_Q(double x);
  *
  * exceptions: GSL_EUNDRFLW
  */
-GSL_EXPORT int gsl_sf_hazard_e(double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_hazard(double x);
+int gsl_sf_hazard_e(double x, gsl_sf_result * result);
+double gsl_sf_hazard(double x);
 
 
 __END_DECLS

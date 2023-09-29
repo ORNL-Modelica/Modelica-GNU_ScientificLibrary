@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -35,18 +35,10 @@
 
 __BEGIN_DECLS
 
-#ifndef GSL_DISABLE_DEPRECATED
-typedef enum {
-  forward = 1, backward = -1,
-  gsl_wavelet_forward = 1, gsl_wavelet_backward = -1
-} 
-gsl_wavelet_direction;
-#else
 typedef enum {
   gsl_wavelet_forward = 1, gsl_wavelet_backward = -1
 } 
 gsl_wavelet_direction;
-#endif
 
 typedef struct
 {
@@ -83,25 +75,25 @@ GSL_VAR const gsl_wavelet_type *gsl_wavelet_haar_centered;
 GSL_VAR const gsl_wavelet_type *gsl_wavelet_bspline;
 GSL_VAR const gsl_wavelet_type *gsl_wavelet_bspline_centered;
 
-GSL_EXPORT gsl_wavelet *gsl_wavelet_alloc (const gsl_wavelet_type * T, size_t k);
-GSL_EXPORT void gsl_wavelet_free (gsl_wavelet * w);
-GSL_EXPORT const char *gsl_wavelet_name (const gsl_wavelet * w);
+gsl_wavelet *gsl_wavelet_alloc (const gsl_wavelet_type * T, size_t k);
+void gsl_wavelet_free (gsl_wavelet * w);
+const char *gsl_wavelet_name (const gsl_wavelet * w);
 
-GSL_EXPORT gsl_wavelet_workspace *gsl_wavelet_workspace_alloc (size_t n);
-GSL_EXPORT void gsl_wavelet_workspace_free (gsl_wavelet_workspace * work);
+gsl_wavelet_workspace *gsl_wavelet_workspace_alloc (size_t n);
+void gsl_wavelet_workspace_free (gsl_wavelet_workspace * work);
 
-GSL_EXPORT int gsl_wavelet_transform (const gsl_wavelet * w, 
-                                      double *data, size_t stride, size_t n,
-                                      gsl_wavelet_direction dir, 
-                                      gsl_wavelet_workspace * work);
+int gsl_wavelet_transform (const gsl_wavelet * w, 
+                           double *data, size_t stride, size_t n,
+                           gsl_wavelet_direction dir, 
+                           gsl_wavelet_workspace * work);
 
-GSL_EXPORT int gsl_wavelet_transform_forward (const gsl_wavelet * w, 
-                                              double *data, size_t stride, size_t n, 
-                                              gsl_wavelet_workspace * work);
+int gsl_wavelet_transform_forward (const gsl_wavelet * w, 
+                                   double *data, size_t stride, size_t n, 
+                                   gsl_wavelet_workspace * work);
 
-GSL_EXPORT int gsl_wavelet_transform_inverse (const gsl_wavelet * w, 
-                                              double *data, size_t stride, size_t n, 
-                                              gsl_wavelet_workspace * work);
+int gsl_wavelet_transform_inverse (const gsl_wavelet * w, 
+                                    double *data, size_t stride, size_t n, 
+                                    gsl_wavelet_workspace * work);
 
 __END_DECLS
 

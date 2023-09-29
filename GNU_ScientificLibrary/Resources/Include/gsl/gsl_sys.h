@@ -1,10 +1,10 @@
 /* sys/gsl_sys.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -20,8 +20,6 @@
 #ifndef __GSL_SYS_H__
 #define __GSL_SYS_H__
 
-#include <gsl/gsl_types.h>
-
 #undef __BEGIN_DECLS
 #undef __END_DECLS
 #ifdef __cplusplus
@@ -34,30 +32,31 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT double gsl_log1p (const double x);
-GSL_EXPORT double gsl_expm1 (const double x);
-GSL_EXPORT double gsl_hypot (const double x, const double y);
-GSL_EXPORT double gsl_acosh (const double x);
-GSL_EXPORT double gsl_asinh (const double x);
-GSL_EXPORT double gsl_atanh (const double x);
+double gsl_log1p (const double x);
+double gsl_expm1 (const double x);
+double gsl_hypot (const double x, const double y);
+double gsl_hypot3 (const double x, const double y, const double z);
+double gsl_acosh (const double x);
+double gsl_asinh (const double x);
+double gsl_atanh (const double x);
 
-GSL_EXPORT int gsl_isnan (const double x);
-GSL_EXPORT int gsl_isinf (const double x);
-GSL_EXPORT int gsl_finite (const double x);
+int gsl_isnan (const double x);
+int gsl_isinf (const double x);
+int gsl_finite (const double x);
 
-GSL_EXPORT double gsl_nan (void);
-GSL_EXPORT double gsl_posinf (void);
-GSL_EXPORT double gsl_neginf (void);
-GSL_EXPORT double gsl_fdiv (const double x, const double y);
+double gsl_nan (void);
+double gsl_posinf (void);
+double gsl_neginf (void);
+double gsl_fdiv (const double x, const double y);
 
-GSL_EXPORT double gsl_coerce_double (const double x);
-GSL_EXPORT float gsl_coerce_float (const float x);
-GSL_EXPORT long double gsl_coerce_long_double (const long double x);
+double gsl_coerce_double (const double x);
+float gsl_coerce_float (const float x);
+long double gsl_coerce_long_double (const long double x);
 
-GSL_EXPORT double gsl_ldexp(const double x, const int e);
-GSL_EXPORT double gsl_frexp(const double x, int * e);
+double gsl_ldexp(const double x, const int e);
+double gsl_frexp(const double x, int * e);
 
-GSL_EXPORT int gsl_fcmp (const double x1, const double x2, const double epsilon);
+int gsl_fcmp (const double x1, const double x2, const double epsilon);
 
 __END_DECLS
 

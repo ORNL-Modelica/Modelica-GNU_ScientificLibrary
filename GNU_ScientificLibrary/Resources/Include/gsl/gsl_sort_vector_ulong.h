@@ -1,10 +1,10 @@
 /* sort/gsl_sort_vector_ulong.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Thomas Walter, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -24,7 +24,6 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_permutation.h>
 #include <gsl/gsl_vector_ulong.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -38,14 +37,15 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT void gsl_sort_vector_ulong (gsl_vector_ulong * v);
-GSL_EXPORT int gsl_sort_vector_ulong_index (gsl_permutation * p, const gsl_vector_ulong * v);
+void gsl_sort_vector_ulong (gsl_vector_ulong * v);
+void gsl_sort_vector2_ulong (gsl_vector_ulong * v1, gsl_vector_ulong * v2);
+int gsl_sort_vector_ulong_index (gsl_permutation * p, const gsl_vector_ulong * v);
 
-GSL_EXPORT int gsl_sort_vector_ulong_smallest (unsigned long * dest, const size_t k, const gsl_vector_ulong * v);
-GSL_EXPORT int gsl_sort_vector_ulong_largest (unsigned long * dest, const size_t k, const gsl_vector_ulong * v);
+int gsl_sort_vector_ulong_smallest (unsigned long * dest, const size_t k, const gsl_vector_ulong * v);
+int gsl_sort_vector_ulong_largest (unsigned long * dest, const size_t k, const gsl_vector_ulong * v);
 
-GSL_EXPORT int gsl_sort_vector_ulong_smallest_index (size_t * p, const size_t k, const gsl_vector_ulong * v);
-GSL_EXPORT int gsl_sort_vector_ulong_largest_index (size_t * p, const size_t k, const gsl_vector_ulong * v);
+int gsl_sort_vector_ulong_smallest_index (size_t * p, const size_t k, const gsl_vector_ulong * v);
+int gsl_sort_vector_ulong_largest_index (size_t * p, const size_t k, const gsl_vector_ulong * v);
 
 __END_DECLS
 

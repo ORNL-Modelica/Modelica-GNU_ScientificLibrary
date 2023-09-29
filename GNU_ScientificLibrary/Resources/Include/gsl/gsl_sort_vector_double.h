@@ -1,10 +1,10 @@
 /* sort/gsl_sort_vector_double.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Thomas Walter, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -24,7 +24,6 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_permutation.h>
 #include <gsl/gsl_vector_double.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -38,14 +37,15 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT void gsl_sort_vector (gsl_vector * v);
-GSL_EXPORT int gsl_sort_vector_index (gsl_permutation * p, const gsl_vector * v);
+void gsl_sort_vector (gsl_vector * v);
+void gsl_sort_vector2 (gsl_vector * v1, gsl_vector * v2);
+int gsl_sort_vector_index (gsl_permutation * p, const gsl_vector * v);
 
-GSL_EXPORT int gsl_sort_vector_smallest (double * dest, const size_t k, const gsl_vector * v);
-GSL_EXPORT int gsl_sort_vector_largest (double * dest, const size_t k, const gsl_vector * v);
+int gsl_sort_vector_smallest (double * dest, const size_t k, const gsl_vector * v);
+int gsl_sort_vector_largest (double * dest, const size_t k, const gsl_vector * v);
 
-GSL_EXPORT int gsl_sort_vector_smallest_index (size_t * p, const size_t k, const gsl_vector * v);
-GSL_EXPORT int gsl_sort_vector_largest_index (size_t * p, const size_t k, const gsl_vector * v);
+int gsl_sort_vector_smallest_index (size_t * p, const size_t k, const gsl_vector * v);
+int gsl_sort_vector_largest_index (size_t * p, const size_t k, const gsl_vector * v);
 
 __END_DECLS
 

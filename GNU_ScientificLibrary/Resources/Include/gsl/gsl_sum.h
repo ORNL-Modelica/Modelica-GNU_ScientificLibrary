@@ -1,17 +1,17 @@
 /* sum/gsl_sum.h
- *
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman, Brian Gough
- *
+ * 
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
- *
+ * 
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,7 +24,6 @@
 #define __GSL_SUM_H__
 
 #include <stdlib.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -63,23 +62,23 @@ typedef struct
 }
 gsl_sum_levin_u_workspace;
 
-GSL_EXPORT gsl_sum_levin_u_workspace *gsl_sum_levin_u_alloc (size_t n);
-GSL_EXPORT void gsl_sum_levin_u_free (gsl_sum_levin_u_workspace * w);
+gsl_sum_levin_u_workspace *gsl_sum_levin_u_alloc (size_t n);
+void gsl_sum_levin_u_free (gsl_sum_levin_u_workspace * w);
 
 /* Basic Levin-u acceleration method.
  *
  *   array       = array of series elements
  *   n           = size of array
  *   sum_accel   = result of summation acceleration
- *   err         = estimated error
+ *   err         = estimated error   
  *
  * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602]
  */
 
-GSL_EXPORT int gsl_sum_levin_u_accel (const double *array,
-                                      const size_t n,
-                                      gsl_sum_levin_u_workspace * w,
-                                      double *sum_accel, double *abserr);
+int gsl_sum_levin_u_accel (const double *array,
+                           const size_t n,
+                           gsl_sum_levin_u_workspace * w,
+                           double *sum_accel, double *abserr);
 
 /* Basic Levin-u acceleration method with constraints on the terms
  * used,
@@ -89,17 +88,17 @@ GSL_EXPORT int gsl_sum_levin_u_accel (const double *array,
  *   min_terms   = minimum number of terms to sum
  *   max_terms   = maximum number of terms to sum
  *   sum_accel   = result of summation acceleration
- *   err         = estimated error
+ *   err         = estimated error   
  *
- * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602]
+ * See [Fessler et al., ACM TOMS 9, 346 (1983) and TOMS-602] 
  */
 
-GSL_EXPORT int gsl_sum_levin_u_minmax (const double *array,
-                                       const size_t n,
-                                       const size_t min_terms,
-                                       const size_t max_terms,
-                                       gsl_sum_levin_u_workspace * w,
-                                       double *sum_accel, double *abserr);
+int gsl_sum_levin_u_minmax (const double *array,
+                            const size_t n,
+                            const size_t min_terms,
+                            const size_t max_terms,
+                            gsl_sum_levin_u_workspace * w,
+                            double *sum_accel, double *abserr);
 
 /* Basic Levin-u step w/o reference to the array of terms.
  * We only need to specify the value of the current term
@@ -113,12 +112,11 @@ GSL_EXPORT int gsl_sum_levin_u_minmax (const double *array,
  *   sum_plain = simple sum of series
  */
 
-GSL_EXPORT
 int
 gsl_sum_levin_u_step (const double term,
                       const size_t n,
                       const size_t nmax,
-                      gsl_sum_levin_u_workspace * w,
+                      gsl_sum_levin_u_workspace * w, 
                       double *sum_accel);
 
 /* The following functions perform the same calculation without
@@ -139,25 +137,25 @@ typedef struct
 }
 gsl_sum_levin_utrunc_workspace;
 
-GSL_EXPORT gsl_sum_levin_utrunc_workspace *gsl_sum_levin_utrunc_alloc (size_t n);
-GSL_EXPORT void gsl_sum_levin_utrunc_free (gsl_sum_levin_utrunc_workspace * w);
+gsl_sum_levin_utrunc_workspace *gsl_sum_levin_utrunc_alloc (size_t n);
+void gsl_sum_levin_utrunc_free (gsl_sum_levin_utrunc_workspace * w);
 
-GSL_EXPORT int gsl_sum_levin_utrunc_accel (const double *array,
-                                           const size_t n,
-                                           gsl_sum_levin_utrunc_workspace * w,
-                                           double *sum_accel, double *abserr_trunc);
+int gsl_sum_levin_utrunc_accel (const double *array,
+                                const size_t n,
+                                gsl_sum_levin_utrunc_workspace * w,
+                                double *sum_accel, double *abserr_trunc);
 
-GSL_EXPORT int gsl_sum_levin_utrunc_minmax (const double *array,
-                                            const size_t n,
-                                            const size_t min_terms,
-                                            const size_t max_terms,
-                                            gsl_sum_levin_utrunc_workspace * w,
-                                            double *sum_accel, double *abserr_trunc);
+int gsl_sum_levin_utrunc_minmax (const double *array,
+                                 const size_t n,
+                                 const size_t min_terms,
+                                 const size_t max_terms,
+                                 gsl_sum_levin_utrunc_workspace * w,
+                                 double *sum_accel, double *abserr_trunc);
 
-GSL_EXPORT int gsl_sum_levin_utrunc_step (const double term,
-                                          const size_t n,
-                                          gsl_sum_levin_utrunc_workspace * w,
-                                          double *sum_accel);
+int gsl_sum_levin_utrunc_step (const double term,
+                               const size_t n,
+                               gsl_sum_levin_utrunc_workspace * w, 
+                               double *sum_accel);
 
 __END_DECLS
 

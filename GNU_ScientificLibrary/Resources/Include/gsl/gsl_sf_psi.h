@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_PSI_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -49,8 +48,8 @@ __BEGIN_DECLS
  * n > 0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int     gsl_sf_psi_int_e(const int n, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi_int(const int n);
+int     gsl_sf_psi_int_e(const int n, gsl_sf_result * result);
+double  gsl_sf_psi_int(const int n);
 
 
 /* Di-Gamma Function psi(x) = psi(0, x)
@@ -58,16 +57,28 @@ GSL_EXPORT double  gsl_sf_psi_int(const int n);
  * x != 0.0, -1.0, -2.0, ...
  * exceptions: GSL_EDOM, GSL_ELOSS
  */
-GSL_EXPORT int     gsl_sf_psi_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi(const double x);
+int     gsl_sf_psi_e(const double x, gsl_sf_result * result);
+double  gsl_sf_psi(const double x);
 
 
 /* Di-Gamma Function Re[psi(1 + I y)]
  *
  * exceptions: none
  */
-GSL_EXPORT int     gsl_sf_psi_1piy_e(const double y, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi_1piy(const double y);
+int     gsl_sf_psi_1piy_e(const double y, gsl_sf_result * result);
+double  gsl_sf_psi_1piy(const double y);
+
+
+/* Di-Gamma Function psi(z) for general complex argument z = x + iy
+ *
+ * exceptions: GSL_EDOM
+ */
+int gsl_sf_complex_psi_e(
+  const double x,
+  const double y,
+  gsl_sf_result * result_re,
+  gsl_sf_result * result_im
+  );
 
 
 /* Tri-Gamma Function psi^(1)(n)
@@ -75,8 +86,8 @@ GSL_EXPORT double  gsl_sf_psi_1piy(const double y);
  * n > 0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int     gsl_sf_psi_1_int_e(const int n, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi_1_int(const int n);
+int     gsl_sf_psi_1_int_e(const int n, gsl_sf_result * result);
+double  gsl_sf_psi_1_int(const int n);
 
 
 /* Tri-Gamma Function psi^(1)(x)
@@ -84,8 +95,8 @@ GSL_EXPORT double  gsl_sf_psi_1_int(const int n);
  * x != 0.0, -1.0, -2.0, ...
  * exceptions: GSL_EDOM, GSL_ELOSS
  */
-GSL_EXPORT int     gsl_sf_psi_1_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi_1(const double x);
+int     gsl_sf_psi_1_e(const double x, gsl_sf_result * result);
+double  gsl_sf_psi_1(const double x);
 
 
 /* Poly-Gamma Function psi^(n)(x)
@@ -93,8 +104,8 @@ GSL_EXPORT double  gsl_sf_psi_1(const double x);
  * n >= 0, x > 0.0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int     gsl_sf_psi_n_e(const int n, const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_psi_n(const int n, const double x);
+int     gsl_sf_psi_n_e(const int n, const double x, gsl_sf_result * result);
+double  gsl_sf_psi_n(const int n, const double x);
 
 
 __END_DECLS

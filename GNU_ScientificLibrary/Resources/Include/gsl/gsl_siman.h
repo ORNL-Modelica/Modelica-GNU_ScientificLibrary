@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -21,7 +21,6 @@
 #define __GSL_SIMAN_H__
 #include <stdlib.h>
 #include <gsl/gsl_rng.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -59,18 +58,17 @@ typedef struct {
 
 /* prototype for the workhorse function */
 
-GSL_EXPORT void gsl_siman_solve(const gsl_rng * r,
-                                void *x0_p, gsl_siman_Efunc_t Ef,
-                                gsl_siman_step_t take_step,
-                                gsl_siman_metric_t distance,
-                                gsl_siman_print_t print_position,
-                                gsl_siman_copy_t copyfunc,
-                                gsl_siman_copy_construct_t copy_constructor,
-                                gsl_siman_destroy_t destructor,
-                                size_t element_size,
-                                gsl_siman_params_t params);
+void gsl_siman_solve(const gsl_rng * r, 
+                     void *x0_p, gsl_siman_Efunc_t Ef,
+                     gsl_siman_step_t take_step,
+                     gsl_siman_metric_t distance,
+                     gsl_siman_print_t print_position,
+                     gsl_siman_copy_t copyfunc,
+                     gsl_siman_copy_construct_t copy_constructor,
+                     gsl_siman_destroy_t destructor,
+                     size_t element_size,
+                     gsl_siman_params_t params);
 
-GSL_EXPORT
 void 
 gsl_siman_solve_many (const gsl_rng * r, void *x0_p, gsl_siman_Efunc_t Ef,
                       gsl_siman_step_t take_step,

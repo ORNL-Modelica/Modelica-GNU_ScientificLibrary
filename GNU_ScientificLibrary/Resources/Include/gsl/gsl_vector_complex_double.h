@@ -1,10 +1,10 @@
 /* vector/gsl_vector_complex_double.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -66,143 +66,134 @@ typedef const _gsl_vector_complex_const_view gsl_vector_complex_const_view;
 
 /* Allocation */
 
-GSL_EXPORT gsl_vector_complex *gsl_vector_complex_alloc (const size_t n);
-GSL_EXPORT gsl_vector_complex *gsl_vector_complex_calloc (const size_t n);
+gsl_vector_complex *gsl_vector_complex_alloc (const size_t n);
+gsl_vector_complex *gsl_vector_complex_calloc (const size_t n);
 
-GSL_EXPORT
 gsl_vector_complex *
-gsl_vector_complex_alloc_from_block (gsl_block_complex * b,
-                                           const size_t offset,
-                                           const size_t n,
+gsl_vector_complex_alloc_from_block (gsl_block_complex * b, 
+                                           const size_t offset, 
+                                           const size_t n, 
                                            const size_t stride);
 
-GSL_EXPORT
 gsl_vector_complex *
-gsl_vector_complex_alloc_from_vector (gsl_vector_complex * v,
-                                             const size_t offset,
-                                             const size_t n,
+gsl_vector_complex_alloc_from_vector (gsl_vector_complex * v, 
+                                             const size_t offset, 
+                                             const size_t n, 
                                              const size_t stride);
 
-GSL_EXPORT void gsl_vector_complex_free (gsl_vector_complex * v);
+void gsl_vector_complex_free (gsl_vector_complex * v);
 
 /* Views */
 
-GSL_EXPORT
 _gsl_vector_complex_view
 gsl_vector_complex_view_array (double *base,
                                      size_t n);
 
-GSL_EXPORT
 _gsl_vector_complex_view
 gsl_vector_complex_view_array_with_stride (double *base,
                                                  size_t stride,
                                                  size_t n);
 
-GSL_EXPORT
 _gsl_vector_complex_const_view
 gsl_vector_complex_const_view_array (const double *base,
                                            size_t n);
 
-GSL_EXPORT
 _gsl_vector_complex_const_view
 gsl_vector_complex_const_view_array_with_stride (const double *base,
                                                        size_t stride,
                                                        size_t n);
 
-GSL_EXPORT
 _gsl_vector_complex_view
 gsl_vector_complex_subvector (gsl_vector_complex *base,
-                                         size_t i,
+                                         size_t i, 
                                          size_t n);
 
 
-GSL_EXPORT
-_gsl_vector_complex_view
-gsl_vector_complex_subvector_with_stride (gsl_vector_complex *v,
-                                                size_t i,
-                                                size_t stride,
+_gsl_vector_complex_view 
+gsl_vector_complex_subvector_with_stride (gsl_vector_complex *v, 
+                                                size_t i, 
+                                                size_t stride, 
                                                 size_t n);
 
-GSL_EXPORT
 _gsl_vector_complex_const_view
 gsl_vector_complex_const_subvector (const gsl_vector_complex *base,
-                                               size_t i,
+                                               size_t i, 
                                                size_t n);
 
-GSL_EXPORT
-_gsl_vector_complex_const_view
-gsl_vector_complex_const_subvector_with_stride (const gsl_vector_complex *v,
-                                                      size_t i,
-                                                      size_t stride,
+
+_gsl_vector_complex_const_view 
+gsl_vector_complex_const_subvector_with_stride (const gsl_vector_complex *v, 
+                                                      size_t i, 
+                                                      size_t stride, 
                                                       size_t n);
 
-GSL_EXPORT
 _gsl_vector_view
 gsl_vector_complex_real (gsl_vector_complex *v);
 
-GSL_EXPORT
-_gsl_vector_view
+_gsl_vector_view 
 gsl_vector_complex_imag (gsl_vector_complex *v);
 
-GSL_EXPORT
 _gsl_vector_const_view
 gsl_vector_complex_const_real (const gsl_vector_complex *v);
 
-GSL_EXPORT
-_gsl_vector_const_view
+_gsl_vector_const_view 
 gsl_vector_complex_const_imag (const gsl_vector_complex *v);
 
 
 /* Operations */
 
-GSL_EXPORT
-gsl_complex
-gsl_vector_complex_get (const gsl_vector_complex * v, const size_t i);
-
-GSL_EXPORT void gsl_vector_complex_set (gsl_vector_complex * v, const size_t i,
-                                   gsl_complex z);
-
-GSL_EXPORT
-gsl_complex
-*gsl_vector_complex_ptr (gsl_vector_complex * v, const size_t i);
-
-GSL_EXPORT
-const gsl_complex
-*gsl_vector_complex_const_ptr (const gsl_vector_complex * v, const size_t i);
-
-GSL_EXPORT void gsl_vector_complex_set_zero (gsl_vector_complex * v);
-GSL_EXPORT void gsl_vector_complex_set_all (gsl_vector_complex * v,
+void gsl_vector_complex_set_zero (gsl_vector_complex * v);
+void gsl_vector_complex_set_all (gsl_vector_complex * v,
                                        gsl_complex z);
-GSL_EXPORT int gsl_vector_complex_set_basis (gsl_vector_complex * v, size_t i);
+int gsl_vector_complex_set_basis (gsl_vector_complex * v, size_t i);
 
-GSL_EXPORT int gsl_vector_complex_fread (FILE * stream,
+int gsl_vector_complex_fread (FILE * stream,
                                     gsl_vector_complex * v);
-GSL_EXPORT int gsl_vector_complex_fwrite (FILE * stream,
+int gsl_vector_complex_fwrite (FILE * stream,
                                      const gsl_vector_complex * v);
-GSL_EXPORT int gsl_vector_complex_fscanf (FILE * stream,
+int gsl_vector_complex_fscanf (FILE * stream,
                                      gsl_vector_complex * v);
-GSL_EXPORT int gsl_vector_complex_fprintf (FILE * stream,
+int gsl_vector_complex_fprintf (FILE * stream,
                                       const gsl_vector_complex * v,
                                       const char *format);
 
-GSL_EXPORT int gsl_vector_complex_memcpy (gsl_vector_complex * dest, const gsl_vector_complex * src);
+int gsl_vector_complex_memcpy (gsl_vector_complex * dest, const gsl_vector_complex * src);
 
-GSL_EXPORT int gsl_vector_complex_reverse (gsl_vector_complex * v);
+int gsl_vector_complex_reverse (gsl_vector_complex * v);
 
-GSL_EXPORT int gsl_vector_complex_swap (gsl_vector_complex * v, gsl_vector_complex * w);
-GSL_EXPORT int gsl_vector_complex_swap_elements (gsl_vector_complex * v, const size_t i, const size_t j);
+int gsl_vector_complex_swap (gsl_vector_complex * v, gsl_vector_complex * w);
+int gsl_vector_complex_swap_elements (gsl_vector_complex * v, const size_t i, const size_t j);
 
-GSL_EXPORT int gsl_vector_complex_isnull (const gsl_vector_complex * v);
+int gsl_vector_complex_equal (const gsl_vector_complex * u, 
+                                    const gsl_vector_complex * v);
+
+int gsl_vector_complex_isnull (const gsl_vector_complex * v);
+int gsl_vector_complex_ispos (const gsl_vector_complex * v);
+int gsl_vector_complex_isneg (const gsl_vector_complex * v);
+int gsl_vector_complex_isnonneg (const gsl_vector_complex * v);
+
+int gsl_vector_complex_add (gsl_vector_complex * a, const gsl_vector_complex * b);
+int gsl_vector_complex_sub (gsl_vector_complex * a, const gsl_vector_complex * b);
+int gsl_vector_complex_mul (gsl_vector_complex * a, const gsl_vector_complex * b);
+int gsl_vector_complex_div (gsl_vector_complex * a, const gsl_vector_complex * b);
+int gsl_vector_complex_scale (gsl_vector_complex * a, const gsl_complex x);
+int gsl_vector_complex_add_constant (gsl_vector_complex * a, const gsl_complex x);
+int gsl_vector_complex_axpby (const gsl_complex alpha, const gsl_vector_complex * x, const gsl_complex beta, gsl_vector_complex * y);
+
+INLINE_DECL gsl_complex gsl_vector_complex_get (const gsl_vector_complex * v, const size_t i);
+INLINE_DECL void gsl_vector_complex_set (gsl_vector_complex * v, const size_t i, gsl_complex z);
+INLINE_DECL gsl_complex *gsl_vector_complex_ptr (gsl_vector_complex * v, const size_t i);
+INLINE_DECL const gsl_complex *gsl_vector_complex_const_ptr (const gsl_vector_complex * v, const size_t i);
 
 #ifdef HAVE_INLINE
 
-extern inline
+INLINE_FUN
 gsl_complex
 gsl_vector_complex_get (const gsl_vector_complex * v,
                               const size_t i)
 {
 #if GSL_RANGE_CHECK
-  if (i >= v->size)
+  if (GSL_RANGE_COND(i >= v->size))
     {
       gsl_complex zero = {{0, 0}};
       GSL_ERROR_VAL ("index out of range", GSL_EINVAL, zero);
@@ -211,13 +202,13 @@ gsl_vector_complex_get (const gsl_vector_complex * v,
   return *GSL_COMPLEX_AT (v, i);
 }
 
-extern inline
+INLINE_FUN
 void
 gsl_vector_complex_set (gsl_vector_complex * v,
                               const size_t i, gsl_complex z)
 {
 #if GSL_RANGE_CHECK
-  if (i >= v->size)
+  if (GSL_RANGE_COND(i >= v->size))
     {
       GSL_ERROR_VOID ("index out of range", GSL_EINVAL);
     }
@@ -225,13 +216,13 @@ gsl_vector_complex_set (gsl_vector_complex * v,
   *GSL_COMPLEX_AT (v, i) = z;
 }
 
-extern inline
+INLINE_FUN
 gsl_complex *
 gsl_vector_complex_ptr (gsl_vector_complex * v,
                               const size_t i)
 {
 #if GSL_RANGE_CHECK
-  if (i >= v->size)
+  if (GSL_RANGE_COND(i >= v->size))
     {
       GSL_ERROR_NULL ("index out of range", GSL_EINVAL);
     }
@@ -239,13 +230,13 @@ gsl_vector_complex_ptr (gsl_vector_complex * v,
   return GSL_COMPLEX_AT (v, i);
 }
 
-extern inline
+INLINE_FUN
 const gsl_complex *
 gsl_vector_complex_const_ptr (const gsl_vector_complex * v,
                                     const size_t i)
 {
 #if GSL_RANGE_CHECK
-  if (i >= v->size)
+  if (GSL_RANGE_COND(i >= v->size))
     {
       GSL_ERROR_NULL ("index out of range", GSL_EINVAL);
     }

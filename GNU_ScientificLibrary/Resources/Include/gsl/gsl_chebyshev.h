@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -20,9 +20,9 @@
 #ifndef __GSL_CHEBYSHEV_H__
 #define __GSL_CHEBYSHEV_H__
 
+#include <stdlib.h>
 #include <gsl/gsl_math.h>
 #include <gsl/gsl_mode.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -69,36 +69,40 @@ typedef struct gsl_cheb_series_struct gsl_cheb_series;
  * a specified interval, for a given function.
  * Return 0 on failure.
  */
-GSL_EXPORT gsl_cheb_series * gsl_cheb_alloc(const size_t order);
+gsl_cheb_series * gsl_cheb_alloc(const size_t order);
 
 /* Free a Chebyshev series previously calculated with gsl_cheb_alloc().
  */
-GSL_EXPORT void gsl_cheb_free(gsl_cheb_series * cs);
+void gsl_cheb_free(gsl_cheb_series * cs);
 
 /* Calculate a Chebyshev series using the storage provided.
  * Uses the interval (a,b) and the order with which it
  * was initially created.
  *
  */
-GSL_EXPORT int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function * func,
-                             const double a, const double b);
+int gsl_cheb_init(gsl_cheb_series * cs, const gsl_function * func,
+                  const double a, const double b);
 
+/* Return the order, size of coefficient array and coefficient array ptr */
+size_t gsl_cheb_order (const gsl_cheb_series * cs);
+size_t gsl_cheb_size (const gsl_cheb_series * cs);
+double *gsl_cheb_coeffs (const gsl_cheb_series * cs);
 
 /* Evaluate a Chebyshev series at a given point.
  * No errors can occur for a struct obtained from gsl_cheb_new().
  */
-GSL_EXPORT double gsl_cheb_eval(const gsl_cheb_series * cs, const double x);
-GSL_EXPORT int gsl_cheb_eval_err(const gsl_cheb_series * cs, const double x, 
-                                 double * result, double * abserr);
+double gsl_cheb_eval(const gsl_cheb_series * cs, const double x);
+int gsl_cheb_eval_err(const gsl_cheb_series * cs, const double x, 
+                      double * result, double * abserr);
 
 
 /* Evaluate a Chebyshev series at a given point, to (at most) the given order.
  * No errors can occur for a struct obtained from gsl_cheb_new().
  */
-GSL_EXPORT double gsl_cheb_eval_n(const gsl_cheb_series * cs, const size_t order, 
-                                  const double x);
-GSL_EXPORT int gsl_cheb_eval_n_err(const gsl_cheb_series * cs, const size_t order, 
-                                   const double x, double * result, double * abserr);
+double gsl_cheb_eval_n(const gsl_cheb_series * cs, const size_t order, 
+                       const double x);
+int gsl_cheb_eval_n_err(const gsl_cheb_series * cs, const size_t order, 
+                        const double x, double * result, double * abserr);
 
 
 /* Evaluate a Chebyshev series at a given point, using the default
@@ -106,21 +110,23 @@ GSL_EXPORT int gsl_cheb_eval_n_err(const gsl_cheb_series * cs, const size_t orde
  * order for other modes.
  * No errors can occur for a struct obtained from gsl_cheb_new().
  */
-GSL_EXPORT double gsl_cheb_eval_mode(const gsl_cheb_series * cs, const double x, gsl_mode_t mode);
-GSL_EXPORT int gsl_cheb_eval_mode_e(const gsl_cheb_series * cs, const double x, gsl_mode_t mode, double * result, double * abserr);
+double gsl_cheb_eval_mode(const gsl_cheb_series * cs, const double x, gsl_mode_t mode);
+int gsl_cheb_eval_mode_e(const gsl_cheb_series * cs, const double x, gsl_mode_t mode, double * result, double * abserr);
 
 
 
 /* Compute the derivative of a Chebyshev series.
  */
-GSL_EXPORT int gsl_cheb_calc_deriv(gsl_cheb_series * deriv, const gsl_cheb_series * cs);
+int gsl_cheb_calc_deriv(gsl_cheb_series * deriv, const gsl_cheb_series * cs);
 
 /* Compute the integral of a Chebyshev series. The
  * integral is fixed by the condition that it equals zero at
  * the left end-point, ie it is precisely
  *       Integrate[cs(t; a,b), {t, a, x}]
  */
-GSL_EXPORT int gsl_cheb_calc_integ(gsl_cheb_series * integ, const gsl_cheb_series * cs);
+int gsl_cheb_calc_integ(gsl_cheb_series * integ, const gsl_cheb_series * cs);
+
+
 
 
 __END_DECLS

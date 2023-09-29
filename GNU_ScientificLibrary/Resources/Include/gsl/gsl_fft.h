@@ -1,10 +1,10 @@
 /* fft/gsl_fft.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -34,20 +34,11 @@
 
 __BEGIN_DECLS
 
-#ifndef GSL_DISABLE_DEPRECATED
-typedef enum
-  {
-    forward = -1, backward = +1,
-    gsl_fft_forward = -1, gsl_fft_backward = +1      
-  }
-gsl_fft_direction;
-#else
 typedef enum
   {
     gsl_fft_forward = -1, gsl_fft_backward = +1   
   }
 gsl_fft_direction;
-#endif
 
 /* this gives the sign in the formula
 

@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_LAGUERRE_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -46,12 +45,12 @@ __BEGIN_DECLS
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_laguerre_1_e(const double a, const double x, gsl_sf_result * result);
-GSL_EXPORT int gsl_sf_laguerre_2_e(const double a, const double x, gsl_sf_result * result);
-GSL_EXPORT int gsl_sf_laguerre_3_e(const double a, const double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_laguerre_1(double a, double x);
-GSL_EXPORT double gsl_sf_laguerre_2(double a, double x);
-GSL_EXPORT double gsl_sf_laguerre_3(double a, double x);
+int gsl_sf_laguerre_1_e(const double a, const double x, gsl_sf_result * result);
+int gsl_sf_laguerre_2_e(const double a, const double x, gsl_sf_result * result);
+int gsl_sf_laguerre_3_e(const double a, const double x, gsl_sf_result * result);
+double gsl_sf_laguerre_1(double a, double x);
+double gsl_sf_laguerre_2(double a, double x);
+double gsl_sf_laguerre_3(double a, double x);
 
 
 /* Evaluate generalized Laguerre polynomials.
@@ -60,8 +59,8 @@ GSL_EXPORT double gsl_sf_laguerre_3(double a, double x);
  * n >= 0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int     gsl_sf_laguerre_n_e(const int n, const double a, const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_laguerre_n(int n, double a, double x);
+int     gsl_sf_laguerre_n_e(const int n, const double a, const double x, gsl_sf_result * result);
+double     gsl_sf_laguerre_n(int n, double a, double x);
 
 
 __END_DECLS

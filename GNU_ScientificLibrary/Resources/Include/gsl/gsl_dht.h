@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -22,7 +22,7 @@
 #ifndef __GSL_DHT_H__
 #define __GSL_DHT_H__
 
-#include <gsl/gsl_types.h>
+#include <stdlib.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -52,36 +52,36 @@ typedef struct gsl_dht_struct gsl_dht;
 /* Create a new transform object for a given size
  * sampling array on the domain [0, xmax].
  */
-GSL_EXPORT gsl_dht * gsl_dht_alloc(size_t size);
-GSL_EXPORT gsl_dht * gsl_dht_new(size_t size, double nu, double xmax);
+gsl_dht * gsl_dht_alloc(size_t size);
+gsl_dht * gsl_dht_new(size_t size, double nu, double xmax);
 
 /* Recalculate a transform object for given values of nu, xmax.
  * You cannot change the size of the object since the internal
  * allocation is reused.
  */
-GSL_EXPORT int gsl_dht_init(gsl_dht * t, double nu, double xmax);
+int gsl_dht_init(gsl_dht * t, double nu, double xmax);
 
 /* The n'th computed x sample point for a given transform.
  * 0 <= n <= size-1
  */
-GSL_EXPORT double gsl_dht_x_sample(const gsl_dht * t, int n);
+double gsl_dht_x_sample(const gsl_dht * t, int n);
 
 
 /* The n'th computed k sample point for a given transform.
  * 0 <= n <= size-1
  */
-GSL_EXPORT double gsl_dht_k_sample(const gsl_dht * t, int n);
+double gsl_dht_k_sample(const gsl_dht * t, int n);
 
 
 /* Free a transform object.
  */
-GSL_EXPORT void gsl_dht_free(gsl_dht * t);
+void gsl_dht_free(gsl_dht * t);
 
 
 /* Perform a transform on a sampled array.
  * f_in[0] ... f_in[size-1] and similarly for f_out[]
  */
-GSL_EXPORT int gsl_dht_apply(const gsl_dht * t, double * f_in, double * f_out);
+int gsl_dht_apply(const gsl_dht * t, double * f_in, double * f_out);
 
 
 __END_DECLS
