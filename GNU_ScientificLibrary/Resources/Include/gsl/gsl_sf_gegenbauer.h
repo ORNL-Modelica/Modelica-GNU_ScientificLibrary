@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_GEGENBAUER_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -43,12 +42,12 @@ __BEGIN_DECLS
  *
  * exceptions: none
  */
-GSL_EXPORT int gsl_sf_gegenpoly_1_e(double lambda, double x, gsl_sf_result * result);
-GSL_EXPORT int gsl_sf_gegenpoly_2_e(double lambda, double x, gsl_sf_result * result);
-GSL_EXPORT int gsl_sf_gegenpoly_3_e(double lambda, double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_gegenpoly_1(double lambda, double x);
-GSL_EXPORT double gsl_sf_gegenpoly_2(double lambda, double x);
-GSL_EXPORT double gsl_sf_gegenpoly_3(double lambda, double x);
+int gsl_sf_gegenpoly_1_e(double lambda, double x, gsl_sf_result * result);
+int gsl_sf_gegenpoly_2_e(double lambda, double x, gsl_sf_result * result);
+int gsl_sf_gegenpoly_3_e(double lambda, double x, gsl_sf_result * result);
+double gsl_sf_gegenpoly_1(double lambda, double x);
+double gsl_sf_gegenpoly_2(double lambda, double x);
+double gsl_sf_gegenpoly_3(double lambda, double x);
 
 
 /* Evaluate Gegenbauer polynomials.
@@ -56,8 +55,8 @@ GSL_EXPORT double gsl_sf_gegenpoly_3(double lambda, double x);
  * lambda > -1/2, n >= 0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int gsl_sf_gegenpoly_n_e(int n, double lambda, double x, gsl_sf_result * result);
-GSL_EXPORT double gsl_sf_gegenpoly_n(int n, double lambda, double x);
+int gsl_sf_gegenpoly_n_e(int n, double lambda, double x, gsl_sf_result * result);
+double gsl_sf_gegenpoly_n(int n, double lambda, double x);
 
 
 /* Calculate array of Gegenbauer polynomials
@@ -66,7 +65,7 @@ GSL_EXPORT double gsl_sf_gegenpoly_n(int n, double lambda, double x);
  * lambda > -1/2, nmax >= 0
  * exceptions: GSL_EDOM
  */
-GSL_EXPORT int gsl_sf_gegenpoly_array(int nmax, double lambda, double x, double * result_array);
+int gsl_sf_gegenpoly_array(int nmax, double lambda, double x, double * result_array);
 
 
 __END_DECLS

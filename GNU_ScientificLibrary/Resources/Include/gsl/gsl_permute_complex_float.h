@@ -1,10 +1,10 @@
 /* permutation/gsl_permute_complex_float.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -24,7 +24,6 @@
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_complex.h>
 #include <gsl/gsl_permutation.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -38,8 +37,8 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT int gsl_permute_complex_float (const size_t * p, float * data, const size_t stride, const size_t n);
-GSL_EXPORT int gsl_permute_complex_float_inverse (const size_t * p, float * data, const size_t stride, const size_t n);
+int gsl_permute_complex_float (const size_t * p, float * data, const size_t stride, const size_t n);
+int gsl_permute_complex_float_inverse (const size_t * p, float * data, const size_t stride, const size_t n);
 
 __END_DECLS
 

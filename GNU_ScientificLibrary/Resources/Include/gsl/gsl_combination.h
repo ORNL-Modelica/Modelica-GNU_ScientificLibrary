@@ -5,7 +5,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_types.h>
+#include <gsl/gsl_inline.h>
 #include <gsl/gsl_check_range.h>
 
 #undef __BEGIN_DECLS
@@ -47,36 +48,36 @@ struct gsl_combination_struct
 
 typedef struct gsl_combination_struct gsl_combination;
 
-GSL_EXPORT gsl_combination *gsl_combination_alloc (const size_t n, const size_t k);
-GSL_EXPORT gsl_combination *gsl_combination_calloc (const size_t n, const size_t k);
-GSL_EXPORT void gsl_combination_init_first (gsl_combination * c);
-GSL_EXPORT void gsl_combination_init_last (gsl_combination * c);
-GSL_EXPORT void gsl_combination_free (gsl_combination * c);
-GSL_EXPORT int gsl_combination_memcpy (gsl_combination * dest, const gsl_combination * src); 
+gsl_combination *gsl_combination_alloc (const size_t n, const size_t k);
+gsl_combination *gsl_combination_calloc (const size_t n, const size_t k);
+void gsl_combination_init_first (gsl_combination * c);
+void gsl_combination_init_last (gsl_combination * c);
+void gsl_combination_free (gsl_combination * c);
+int gsl_combination_memcpy (gsl_combination * dest, const gsl_combination * src); 
 
-GSL_EXPORT int gsl_combination_fread (FILE * stream, gsl_combination * c);
-GSL_EXPORT int gsl_combination_fwrite (FILE * stream, const gsl_combination * c);
-GSL_EXPORT int gsl_combination_fscanf (FILE * stream, gsl_combination * c);
-GSL_EXPORT int gsl_combination_fprintf (FILE * stream, const gsl_combination * c, const char *format);
+int gsl_combination_fread (FILE * stream, gsl_combination * c);
+int gsl_combination_fwrite (FILE * stream, const gsl_combination * c);
+int gsl_combination_fscanf (FILE * stream, gsl_combination * c);
+int gsl_combination_fprintf (FILE * stream, const gsl_combination * c, const char *format);
 
-GSL_EXPORT size_t gsl_combination_n (const gsl_combination * c);
-GSL_EXPORT size_t gsl_combination_k (const gsl_combination * c);
-GSL_EXPORT size_t * gsl_combination_data (const gsl_combination * c);
+size_t gsl_combination_n (const gsl_combination * c);
+size_t gsl_combination_k (const gsl_combination * c);
+size_t * gsl_combination_data (const gsl_combination * c);
 
-GSL_EXPORT size_t gsl_combination_get (const gsl_combination * c, const size_t i);
+int gsl_combination_valid (gsl_combination * c);
+int gsl_combination_next (gsl_combination * c);
+int gsl_combination_prev (gsl_combination * c);
 
-GSL_EXPORT int gsl_combination_valid (gsl_combination * c);
-GSL_EXPORT int gsl_combination_next (gsl_combination * c);
-GSL_EXPORT int gsl_combination_prev (gsl_combination * c);
+INLINE_DECL size_t gsl_combination_get (const gsl_combination * c, const size_t i);
 
 #ifdef HAVE_INLINE
 
-extern inline
+INLINE_FUN
 size_t
 gsl_combination_get (const gsl_combination * c, const size_t i)
 {
 #if GSL_RANGE_CHECK
-  if (i >= c->k)
+  if (GSL_RANGE_COND(i >= c->k)) /* size_t is unsigned, can't be negative */
     {
       GSL_ERROR_VAL ("index out of range", GSL_EINVAL, 0);
     }

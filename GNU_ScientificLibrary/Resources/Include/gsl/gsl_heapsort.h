@@ -1,10 +1,10 @@
 /* sort/gsl_heapsort.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Thomas Walter, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Thomas Walter, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -21,7 +21,6 @@
 #define __GSL_HEAPSORT_H__
 
 #include <gsl/gsl_permutation.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -35,10 +34,10 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT typedef int (*gsl_comparison_fn_t) (const void *, const void *);
+typedef int (*gsl_comparison_fn_t) (const void *, const void *);
 
-GSL_EXPORT void gsl_heapsort (void * array, size_t count, size_t size, gsl_comparison_fn_t compare);
-GSL_EXPORT int gsl_heapsort_index (size_t * p, const void * array, size_t count, size_t size, gsl_comparison_fn_t compare);
+void gsl_heapsort (void * array, size_t count, size_t size, gsl_comparison_fn_t compare);
+int gsl_heapsort_index (size_t * p, const void * array, size_t count, size_t size, gsl_comparison_fn_t compare);
 
 __END_DECLS
 

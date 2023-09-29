@@ -15,7 +15,9 @@
 __BEGIN_DECLS
 
 
-#define GSL_VERSION "1.8"
+#define GSL_VERSION "2.7.1"
+#define GSL_MAJOR_VERSION 2
+#define GSL_MINOR_VERSION 7
 
 GSL_VAR const char * gsl_version;
 

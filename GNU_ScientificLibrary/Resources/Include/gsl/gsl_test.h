@@ -1,10 +1,10 @@
 /* err/gsl_test.h
  * 
- * Copyright (C) 1996, 1997, 1998, 1999, 2000 Gerard Jungman, Brian Gough
+ * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2007 Gerard Jungman, Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -20,8 +20,6 @@
 #ifndef __GSL_TEST_H__
 #define __GSL_TEST_H__
 
-#include <gsl/gsl_types.h>
-
 #undef __BEGIN_DECLS
 #undef __END_DECLS
 #ifdef __cplusplus
@@ -34,39 +32,31 @@
 
 __BEGIN_DECLS
 
-GSL_EXPORT 
 void
   gsl_test (int status, const char *test_description, ...);
 
-GSL_EXPORT 
 void
 gsl_test_rel (double result, double expected, double relative_error,
               const char *test_description, ...) ;
 
-GSL_EXPORT 
 void
 gsl_test_abs (double result, double expected, double absolute_error,
               const char *test_description, ...) ;
 
-GSL_EXPORT 
 void
 gsl_test_factor (double result, double expected, double factor,
                  const char *test_description, ...) ;
 
-GSL_EXPORT 
 void
 gsl_test_int (int result, int expected, const char *test_description, ...) ;
 
-GSL_EXPORT 
 void
 gsl_test_str (const char * result, const char * expected, 
               const char *test_description, ...) ;
 
-GSL_EXPORT 
 void
   gsl_test_verbose (int verbose) ;
 
-GSL_EXPORT
 int
   gsl_test_summary (void) ;
 

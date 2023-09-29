@@ -1,11 +1,11 @@
 /* const/gsl_const_mks.h
  * 
  * Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
- * 2006 Brian Gough
+ * 2006, 2007, 2008, 2009 Brian Gough
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,23 +23,19 @@
 
 #define GSL_CONST_MKS_SPEED_OF_LIGHT (2.99792458e8) /* m / s */
 #define GSL_CONST_MKS_GRAVITATIONAL_CONSTANT (6.673e-11) /* m^3 / kg s^2 */
-#define GSL_CONST_MKS_PLANCKS_CONSTANT_H (6.62606876e-34) /* kg m^2 / s */
-#define GSL_CONST_MKS_PLANCKS_CONSTANT_HBAR (1.05457159642e-34) /* kg m^2 / s */
+#define GSL_CONST_MKS_PLANCKS_CONSTANT_H (6.62606896e-34) /* kg m^2 / s */
+#define GSL_CONST_MKS_PLANCKS_CONSTANT_HBAR (1.05457162825e-34) /* kg m^2 / s */
 #define GSL_CONST_MKS_ASTRONOMICAL_UNIT (1.49597870691e11) /* m */
 #define GSL_CONST_MKS_LIGHT_YEAR (9.46053620707e15) /* m */
 #define GSL_CONST_MKS_PARSEC (3.08567758135e16) /* m */
 #define GSL_CONST_MKS_GRAV_ACCEL (9.80665e0) /* m / s^2 */
-#define GSL_CONST_MKS_ELECTRON_VOLT (1.602176462e-19) /* kg m^2 / s^2 */
+#define GSL_CONST_MKS_ELECTRON_VOLT (1.602176487e-19) /* kg m^2 / s^2 */
 #define GSL_CONST_MKS_MASS_ELECTRON (9.10938188e-31) /* kg */
 #define GSL_CONST_MKS_MASS_MUON (1.88353109e-28) /* kg */
 #define GSL_CONST_MKS_MASS_PROTON (1.67262158e-27) /* kg */
 #define GSL_CONST_MKS_MASS_NEUTRON (1.67492716e-27) /* kg */
-#define GSL_CONST_MKS_RYDBERG (2.17987190389e-18) /* kg m^2 / s^2 */
-#define GSL_CONST_MKS_BOLTZMANN (1.3806503e-23) /* kg m^2 / K s^2 */
-#define GSL_CONST_MKS_BOHR_MAGNETON (9.27400899e-24) /* A m^2 */
-#define GSL_CONST_MKS_NUCLEAR_MAGNETON (5.05078317e-27) /* A m^2 */
-#define GSL_CONST_MKS_ELECTRON_MAGNETIC_MOMENT (9.28476362e-24) /* A m^2 */
-#define GSL_CONST_MKS_PROTON_MAGNETIC_MOMENT (1.410606633e-26) /* A m^2 */
+#define GSL_CONST_MKS_RYDBERG (2.17987196968e-18) /* kg m^2 / s^2 */
+#define GSL_CONST_MKS_BOLTZMANN (1.3806504e-23) /* kg m^2 / K s^2 */
 #define GSL_CONST_MKS_MOLAR_GAS (8.314472e0) /* kg m^2 / K mol s^2 */
 #define GSL_CONST_MKS_STANDARD_GAS_VOLUME (2.2710981e-2) /* m^3 / mol */
 #define GSL_CONST_MKS_MINUTE (6e1) /* s */
@@ -80,7 +76,7 @@
 #define GSL_CONST_MKS_UK_TON (1.0160469088e3) /* kg */
 #define GSL_CONST_MKS_TROY_OUNCE (3.1103475e-2) /* kg */
 #define GSL_CONST_MKS_CARAT (2e-4) /* kg */
-#define GSL_CONST_MKS_UNIFIED_ATOMIC_MASS (1.66053873e-27) /* kg */
+#define GSL_CONST_MKS_UNIFIED_ATOMIC_MASS (1.660538782e-27) /* kg */
 #define GSL_CONST_MKS_GRAM_FORCE (9.80665e-3) /* kg m / s^2 */
 #define GSL_CONST_MKS_POUND_FORCE (4.44822161526e0) /* kg m / s^2 */
 #define GSL_CONST_MKS_KILOPOUND_FORCE (4.44822161526e3) /* kg m / s^2 */
@@ -98,9 +94,6 @@
 #define GSL_CONST_MKS_PSI (6.89475729317e3) /* kg / m s^2 */
 #define GSL_CONST_MKS_POISE (1e-1) /* kg m^-1 s^-1 */
 #define GSL_CONST_MKS_STOKES (1e-4) /* m^2 / s */
-#define GSL_CONST_MKS_FARADAY (9.6485341472e4) /* A s / mol */
-#define GSL_CONST_MKS_ELECTRON_CHARGE (1.602176462e-19) /* A s */
-#define GSL_CONST_MKS_GAUSS (1e-4) /* kg / A s^2 */
 #define GSL_CONST_MKS_STILB (1e4) /* cd / m^2 */
 #define GSL_CONST_MKS_LUMEN (1e0) /* cd sr */
 #define GSL_CONST_MKS_LUX (1e0) /* cd sr / m^2 */
@@ -117,10 +110,17 @@
 #define GSL_CONST_MKS_DYNE (1e-5) /* kg m / s^2 */
 #define GSL_CONST_MKS_JOULE (1e0) /* kg m^2 / s^2 */
 #define GSL_CONST_MKS_ERG (1e-7) /* kg m^2 / s^2 */
-#define GSL_CONST_MKS_STEFAN_BOLTZMANN_CONSTANT (5.67039934436e-8) /* kg / K^4 s^3 */
-#define GSL_CONST_MKS_THOMSON_CROSS_SECTION (6.65245853542e-29) /* m^2 */
+#define GSL_CONST_MKS_STEFAN_BOLTZMANN_CONSTANT (5.67040047374e-8) /* kg / K^4 s^3 */
+#define GSL_CONST_MKS_THOMSON_CROSS_SECTION (6.65245893699e-29) /* m^2 */
+#define GSL_CONST_MKS_BOHR_MAGNETON (9.27400899e-24) /* A m^2 */
+#define GSL_CONST_MKS_NUCLEAR_MAGNETON (5.05078317e-27) /* A m^2 */
+#define GSL_CONST_MKS_ELECTRON_MAGNETIC_MOMENT (9.28476362e-24) /* A m^2 */
+#define GSL_CONST_MKS_PROTON_MAGNETIC_MOMENT (1.410606633e-26) /* A m^2 */
+#define GSL_CONST_MKS_FARADAY (9.64853429775e4) /* A s / mol */
+#define GSL_CONST_MKS_ELECTRON_CHARGE (1.602176487e-19) /* A s */
 #define GSL_CONST_MKS_VACUUM_PERMITTIVITY (8.854187817e-12) /* A^2 s^4 / kg m^3 */
 #define GSL_CONST_MKS_VACUUM_PERMEABILITY (1.25663706144e-6) /* kg m / A^2 s^2 */
 #define GSL_CONST_MKS_DEBYE (3.33564095198e-30) /* A s^2 / m^2 */
+#define GSL_CONST_MKS_GAUSS (1e-4) /* kg / A s^2 */
 
 #endif /* __GSL_CONST_MKS__ */

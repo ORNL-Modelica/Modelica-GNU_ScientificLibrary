@@ -4,7 +4,7 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
+ * the Free Software Foundation; either version 3 of the License, or (at
  * your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful, but
@@ -23,7 +23,6 @@
 #define __GSL_SF_FERMI_DIRAC_H__
 
 #include <gsl/gsl_sf_result.h>
-#include <gsl/gsl_types.h>
 
 #undef __BEGIN_DECLS
 #undef __END_DECLS
@@ -53,32 +52,32 @@ __BEGIN_DECLS
  *
  * exceptions: GSL_EUNDRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_m1_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_m1(const double x);
+int     gsl_sf_fermi_dirac_m1_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_m1(const double x);
 
 
 /* Complete integral F_0(x) = ln(1 + e^x)
  *
  * exceptions: GSL_EUNDRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_0_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_0(const double x);
+int     gsl_sf_fermi_dirac_0_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_0(const double x);
 
 
 /* Complete integral F_1(x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_1_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_1(const double x);
+int     gsl_sf_fermi_dirac_1_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_1(const double x);
 
 
 /* Complete integral F_2(x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_2_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_2(const double x);
+int     gsl_sf_fermi_dirac_2_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_2(const double x);
 
 
 /* Complete integral F_j(x)
@@ -86,40 +85,40 @@ GSL_EXPORT double  gsl_sf_fermi_dirac_2(const double x);
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_int_e(const int j, const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_int(const int j, const double x);
+int     gsl_sf_fermi_dirac_int_e(const int j, const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_int(const int j, const double x);
 
 
 /* Complete integral F_{-1/2}(x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_mhalf_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_mhalf(const double x);
+int     gsl_sf_fermi_dirac_mhalf_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_mhalf(const double x);
 
 
 /* Complete integral F_{1/2}(x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_half_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_half(const double x);
+int     gsl_sf_fermi_dirac_half_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_half(const double x);
 
 
 /* Complete integral F_{3/2}(x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EOVRFLW
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_3half_e(const double x, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_3half(const double x);
+int     gsl_sf_fermi_dirac_3half_e(const double x, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_3half(const double x);
 
 
 /* Incomplete integral F_0(x,b) = ln(1 + e^(b-x)) - (b-x)
  *
  * exceptions: GSL_EUNDRFLW, GSL_EDOM
  */
-GSL_EXPORT int     gsl_sf_fermi_dirac_inc_0_e(const double x, const double b, gsl_sf_result * result);
-GSL_EXPORT double  gsl_sf_fermi_dirac_inc_0(const double x, const double b);
+int     gsl_sf_fermi_dirac_inc_0_e(const double x, const double b, gsl_sf_result * result);
+double     gsl_sf_fermi_dirac_inc_0(const double x, const double b);
 
 
 __END_DECLS
