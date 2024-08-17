@@ -1,0 +1,10 @@
+// need system commands to construct the integrand C function, compile the object file, 
+//  and build the archive file 
+// !!! should replace system-specific commands with Modelica.Utilities ones 
+cwd = Modelica.Utilities.System.getWorkDirectory();
+Modelica.Utilities.System.command("cp -f itop.c integrand.c");
+Modelica.Utilities.Streams.print(cline,"integrand.c");
+Modelica.Utilities.System.command("gcc -I../../Resources/Include/ -c integration_mi.c integrand.c");
+Modelica.Utilities.System.command("ar cr libgsl_integration_MI.a integration_mi.o integrand.o");
+Modelica.Utilities.System.command("mv -f libgsl_integration_MI.a ../../Resources/Library/");
+
