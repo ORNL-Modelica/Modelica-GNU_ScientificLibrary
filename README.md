@@ -1,10 +1,11 @@
 # Modelica-GNU_ScientificLibrary
 
 Free library for accessing the [GNU Scientific Library](https://www.gnu.org/software/gsl/) functions via Modelica.
+- Uses GSL v2.7.1
 
 ## Tested Environments
 
-- OpenModelica 1.21.0.
+- OpenModelica 1.23.1.
 - Dymola 2023x Refresh 1
 
 ## License
