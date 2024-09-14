@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "integration_mi.h"
 #include "gsl/gsl_integration.h"
+#include "integration_mi.h"
 
 
 void qag_mi( double *res , double *err , double a , double b , double rel_err , int limit , int key ){
