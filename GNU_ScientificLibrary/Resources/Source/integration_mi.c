@@ -3,6 +3,7 @@
      
      -- first successfully tested on Linux/OpenModelica with QAG routine, v1.0.2, 09.2024 (tb) 
      -- added QAGS, QAGI*, QAWC, QAWO, CQUAD routines, v1.0.3, 09.2024 (tb) 
+     -- adding parameter passing option, v1.0.4, 09.2024 (tb) 
 */
 #include <stdio.h>
 #include <math.h>
@@ -11,12 +12,24 @@
 #include "integration_mi.h"
 
 
-void qag_mi( double *res , double *err , double a , double b , double rel_err , int limit , int key ){
+double integrand_gsl( double x , void *params ){
+  double f;
+  double *par;
+
+  par = (double *) params;
+  f = integrand(x,par);
+
+  return(f);
+}
+
+
+void qag_mi( double *res , double *err , double *par , double a , double b , double rel_err , int limit , int key ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qag(&FF,a,b,0,rel_err,limit,key,w,res,err);
 
@@ -26,12 +39,13 @@ void qag_mi( double *res , double *err , double a , double b , double rel_err , 
 }
 
 
-void qags_mi( double *res , double *err , double a , double b , double rel_err , int limit ){
+void qags_mi( double *res , double *err , double *par , double a , double b , double rel_err , int limit ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qags(&FF,a,b,0,rel_err,limit,w,res,err);
 
@@ -41,12 +55,13 @@ void qags_mi( double *res , double *err , double a , double b , double rel_err ,
 }
 
 
-void qagi_mi( double *res , double *err , double rel_err , int limit ){
+void qagi_mi( double *res , double *err , double *par , double rel_err , int limit ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qagi(&FF,0,rel_err,limit,w,res,err);
 
@@ -56,12 +71,13 @@ void qagi_mi( double *res , double *err , double rel_err , int limit ){
 }
 
 
-void qagiu_mi( double *res , double *err , double a , double rel_err , int limit ){
+void qagiu_mi( double *res , double *err , double *par , double a , double rel_err , int limit ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qagiu(&FF,a,0,rel_err,limit,w,res,err);
 
@@ -71,12 +87,13 @@ void qagiu_mi( double *res , double *err , double a , double rel_err , int limit
 }
 
 
-void qagil_mi( double *res , double *err , double b , double rel_err , int limit ){
+void qagil_mi( double *res , double *err , double *par , double b , double rel_err , int limit ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qagil(&FF,b,0,rel_err,limit,w,res,err);
 
@@ -86,12 +103,13 @@ void qagil_mi( double *res , double *err , double b , double rel_err , int limit
 }
 
 
-void qawc_mi( double *res , double *err , double a , double b , double c, double rel_err , int limit ){
+void qawc_mi( double *res , double *err , double *par , double a , double b , double c, double rel_err , int limit ){
 
   gsl_integration_workspace *w = gsl_integration_workspace_alloc(limit);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_qawc(&FF,a,b,c,0,rel_err,limit,w,res,err);
 
@@ -101,7 +119,7 @@ void qawc_mi( double *res , double *err , double a , double b , double c, double
 }
 
 
-void qawo_mi( double *res , double *err , double a , double b , double omega, int isine, double rel_err , int limit ){
+void qawo_mi( double *res , double *err , double *par , double a , double b , double omega, int isine, double rel_err , int limit ){
 
   int icode;
   double L = b - a;
@@ -112,7 +130,8 @@ void qawo_mi( double *res , double *err , double a , double b , double omega, in
   gsl_integration_qawo_table *t = gsl_integration_qawo_table_alloc(omega,L,sine,n);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   icode = gsl_integration_qawo(&FF,a,0,rel_err,limit,w,t,res,err);
   /*
@@ -131,13 +150,14 @@ void qawo_mi( double *res , double *err , double a , double b , double omega, in
 }
 
 
-void cquad_mi( double *res , double *err , double a , double b , double rel_err , int n_int ){
+void cquad_mi( double *res , double *err , double *par , double a , double b , double rel_err , int n_int ){
 
-  int neval;
+  size_t neval;
   gsl_integration_cquad_workspace *w = gsl_integration_cquad_workspace_alloc(n_int);
 
   gsl_function FF;
-  FF.function = &integrand;
+  FF.function = &integrand_gsl;
+  FF.params = par;
 
   gsl_integration_cquad(&FF,a,b,0,rel_err,w,res,err,&neval);
 

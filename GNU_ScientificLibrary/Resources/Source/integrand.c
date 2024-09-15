@@ -4,8 +4,7 @@
 #include "integration_mi.h"
 #include "gsl/gsl_integration.h"
 
-double integrand( double x ){
+double integrand( double x , double *par ){
   double f;
-
-  f=exp(-x*x);return(f);}
-
+  
+f=exp(-par[0]*x*x);return(f);}
