@@ -6,7 +6,7 @@ function airy_Bi "Airy Bi function"
   output Real y;
 
   external "C" y = gsl_sf_airy_Bi(x,0) annotation(
-    Library = "libgsl");
+    Library = "gsl");
   annotation(
     Documentation(info = "<html><head></head><body><p><span style=\"font-family: Times New Roman; background-color: #ffffff;\">This routine computes the Airy function, </span><span style=\"background-color: rgb(255, 255, 255);\"><font face=\"Symbol\"><i>Bi</i></font><i style=\"font-family: 'Times New Roman';\">(x)</i><span style=\"font-family: 'Times New Roman';\">.</span></span></p>
 </body></html>"));

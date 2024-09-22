@@ -8,8 +8,9 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "gsl/gsl_integration.h"
 #include "integration_mi.h"
+#include "gsl/gsl_integration.h"
+#include "gsl/gsl_specfunc.h"
 
 
 double integrand_gsl( double x , void *params ){

@@ -1,9 +1,10 @@
 within GNU_ScientificLibrary.Blocks.integration;
 
 block QAGIL_quadrature
-  // block by tommy.burch@physik.uni-r.de
+  // contact: tommy.burch@physik.uni-r.de
   extends Icons.Block;
-  parameter Integer n_par = 1, limit = 1000;
+  parameter Integer n_par = 1 "Number of parameters in integrand";
+  parameter Integer limit = 1000;
   parameter Real rel_err = 1.e-7;
   Real err;
   Modelica.Blocks.Interfaces.RealInput b annotation(
