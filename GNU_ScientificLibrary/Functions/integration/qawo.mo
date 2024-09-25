@@ -6,6 +6,7 @@ function qawo "QAWO integration routine"
   input Real par[n_par],a,b,omega,rel_err;
   input Integer isine, limit;
   output Real y, err;
+  protected final parameter Real kludge = Functions.specfunc.gamma(1);
   
   external "C" qawo_mi(y, err, par, a, b, omega, isine, rel_err, limit) annotation(
     Library = "gsl_integration_MI");

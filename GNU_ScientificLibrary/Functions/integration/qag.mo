@@ -6,6 +6,9 @@ function qag "QAG integration routine"
   input Real par[n_par],a,b,rel_err;
   input Integer limit,key;
   output Real y,err;
+  // kludge: if not already present in the model, a direct call to a GSL function appears 
+  //  to be required to have libgsl load along with the interface (???!!!) 
+  protected final parameter Real kludge = Functions.specfunc.gamma(1);
 
 // LibraryDirectory info here appears to be insufficient:
   //  'integrand_setup' therefore also copies libgsl_integration_MI.so to default location

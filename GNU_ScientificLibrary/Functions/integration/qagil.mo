@@ -6,6 +6,7 @@ function qagil "QAGIL integration routine"
   input Real par[n_par],b,rel_err;
   input Integer limit;
   output Real y, err;
+  protected final parameter Real kludge = Functions.specfunc.gamma(1);
   
   external "C" qagil_mi(y, err, par, b, rel_err, limit) annotation(
     Library = "gsl_integration_MI");

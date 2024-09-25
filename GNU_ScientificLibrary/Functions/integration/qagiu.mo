@@ -6,6 +6,7 @@ function qagiu "QAGIU integration routine"
   input Real par[n_par],a,rel_err;
   input Integer limit;
   output Real y, err;
+  protected final parameter Real kludge = Functions.specfunc.gamma(1);
   
   external "C" qagiu_mi(y, err, par, a, rel_err, limit) annotation(
     Library = "gsl_integration_MI");
