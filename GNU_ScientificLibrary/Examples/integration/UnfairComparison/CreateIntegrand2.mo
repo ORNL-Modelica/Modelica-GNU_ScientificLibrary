@@ -3,10 +3,10 @@ within GNU_ScientificLibrary.Examples.integration.UnfairComparison;
 model CreateIntegrand2 "Create another integrand for integration using GSL"
   // contact: tommy.burch@physik.uni-r.de
   extends Modelica.Icons.Example;
-  
+  //
   parameter String C_integrand = "log(par[0]*x)/sqrt(x)" 
     "Integrand in C-code, =f(x)";
-    
+  //
   Integer rcode[2];
 initial equation
 // "initial" function call to compile (only once) C-code of integrand and
