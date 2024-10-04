@@ -39,7 +39,7 @@ model ExpTranscendEqs "Solution of Exponential-Transendental Equation"
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const_bceac(k = params.w_arg)  annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  GNU_ScientificLibrary.Examples.specfunc.ExpTranscendEqs.Params params annotation(
+  Params params annotation(
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant x_zero_minus(k = params.x_zero) annotation(
     Placement(visible = true, transformation(origin = {-50, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

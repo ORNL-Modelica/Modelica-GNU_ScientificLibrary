@@ -21,7 +21,7 @@ algorithm
   Modelica.Utilities.Files.copy(mi_hfile,"integration_mi.h",replace=true);
   Modelica.Utilities.Streams.print(C_line,"integrand.c");
   rcode[1] := Modelica.Utilities.System.command("gcc -fPIC -c integration_mi.c integrand.c -I" + incl_path);
-  rcode[2] := Modelica.Utilities.System.command("gcc -lm -lgsl -shared integration_mi.o integrand.o -o libgsl_integration_MI.so");
+  rcode[2] := Modelica.Utilities.System.command("gcc -lm -shared integration_mi.o integrand.o -o libgsl_integration_MI.so");
 // pointing out other possible LibraryDirectory (e.g., in qag) seems not to work:
 //   copying archive file to default directory...
   ar_file := Modelica.Utilities.Files.loadResource("modelica://GNU_ScientificLibrary/Resources/Library/linux64/liblibgsl_integration_MI.so");
