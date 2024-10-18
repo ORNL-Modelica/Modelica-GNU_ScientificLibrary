@@ -28,7 +28,9 @@ For example, an integrand-setup model (e.g., 'ExampleIntegral.CreateIntegrand') 
 
 	gcc -fPIC -c integrand.c integration_mi.c 
 	
-	gcc -shared integration.o integration_mi.o -o libgsl_integration_MI.so  [.dll for windows] 
+	gcc -shared integration.o integration_mi.o -lm -llibgsl -o libgsl_integration_MI.so  [.dll for windows] 
+	
+For windows systems, one should ensure that the PATH environment variable includes the location of the compiler (OpenModelica supplies such msys tools).
 
 ## License
 
