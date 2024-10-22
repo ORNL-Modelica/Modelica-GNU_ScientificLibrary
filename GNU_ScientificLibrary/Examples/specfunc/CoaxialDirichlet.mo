@@ -2,7 +2,8 @@ within GNU_ScientificLibrary.Examples.specfunc;
 
 model CoaxialDirichlet "Coaxial Dirichlet Boundary-Value Problem"
   // example by tommy.burch@physik.uni-r.de
-  extends Modelica.Icons.Example;
+  // extends Modelica.Icons.Example;
+  extends Modelica.Icons.UnderConstruction;
   parameter Real x1 = 1, x2 = 20;
   Modelica.Blocks.Sources.Ramp x_ramp(duration = 1, height = x2 - x1, offset = x1, startTime = 0)  annotation(
     Placement(visible = true, transformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

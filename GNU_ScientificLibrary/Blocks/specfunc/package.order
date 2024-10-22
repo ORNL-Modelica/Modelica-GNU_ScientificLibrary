@@ -22,6 +22,7 @@ SphBessel_yl
 Legendre_Pl
 SphHarm_Ylm
 Hydrogen_Rnl
+FermiDirac_Fmhalf
 FermiDirac_Fhalf
 FermiDirac_F3half
 FermiDirac_Fn

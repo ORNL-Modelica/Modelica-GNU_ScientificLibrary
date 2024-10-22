@@ -24,8 +24,8 @@ model ExpTranscendEqs "Solution of Exponential-Transendental Equation"
     parameter Real a = 1.0;
     parameter Real b = 1.0 "must NOT be zero";
     parameter Real c = 0.1 "must NOT be zero";
-    parameter Real delta_x = x_max - x_min "do NOT change";
-    parameter Real w_arg = -b*c*Modelica.Constants.e^(a*c) "do NOT change";
+    final parameter Real delta_x = x_max - x_min "do NOT change";
+    final parameter Real w_arg = -b*c*Modelica.Constants.e^(a*c) "do NOT change";
   end Params;
   Modelica.Blocks.Math.Product prod_becx annotation(
     Placement(visible = true, transformation(origin = {10, 64}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -39,7 +39,7 @@ model ExpTranscendEqs "Solution of Exponential-Transendental Equation"
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const_bceac(k = params.w_arg)  annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  GNU_ScientificLibrary.Examples.specfunc.ExpTranscendEqs.Params params annotation(
+  Params params annotation(
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant x_zero_minus(k = params.x_zero) annotation(
     Placement(visible = true, transformation(origin = {-50, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -98,5 +98,5 @@ equation
     Line(points = {{22, 30}, {74, 30}, {74, 16}, {78, 16}}, color = {0, 0, 127}));
 protected  annotation(
     Diagram(coordinateSystem(extent = {{-100, 100}, {100, -80}})),
-    Documentation(info = "<html><head></head><body>Exponential transcendental equations of the form,<div><br><div>x = a + b e<sup>cx</sup></div><div><sup><br></sup></div><div>may be solved using the Lambert W functions:</div><div><br></div><div>x<sub>k</sub> = a - W<sub>k</sub>(-bc e<sup>ac</sup>) / c&nbsp;</div><div><br></div><div>where W(y) is a solution of: W(y) e<sup>W(y)</sup>&nbsp;= y .</div><div><br></div><div>If the argument of the W function is real and between -1/e and 0, then there are two real values: W<sub>0</sub>&nbsp;(&gt;-1) and W<sub>-1</sub>&nbsp;(&lt;-1).</div><div>If the argument is real and &gt;=0, then there is one real value: W<sub>0</sub>.</div></div><div><br></div><div>In this example, x values are produced in a ramp source. Both sides of the equation are produced: y=x and z=a+be<sup>cx</sup>. The result, r<sub>0</sub>=a-W<sub>0</sub>(-bce<sup>ac</sup>)/c, is also determined and all three meet at the appropriate point:</div><div><img src=\"modelica://GNU_ScientificLibrary/Examples/specfunc/expTranscendEq.png\"></div><div><br></div><div>This type of solver is coded into the \"SolveExpTranscend\" block under the \"NumericalInversions\" package. The use of this block on the far right reveals that there is a 2nd solution from W<sub>-1</sub> at x~35.</div></body></html>"));
+    Documentation(info = "<html><head></head><body>Exponential transcendental equations of the form,<div><br><div>x = a + b e<sup>cx</sup></div><div><sup><br></sup></div><div>may be solved using the Lambert W functions:</div><div><br></div><div>x<sub>k</sub> = a - W<sub>k</sub>(-bc e<sup>ac</sup>) / c&nbsp;</div><div><br></div><div>where W(y) is a solution of: W(y) e<sup>W(y)</sup>&nbsp;= y .</div><div><br></div><div>If the argument of the W function is real and between -1/e and 0, then there are two real values: W<sub>0</sub>&nbsp;(&gt; -1) and W<sub>-1</sub>&nbsp;(&lt; -1).</div><div>If the argument is real and &gt;=0, then there is one real value: W<sub>0</sub>.</div></div><div><br></div><div>In this example, x values are produced in a ramp source. Both sides of the equation are produced: y=x and z=a+be<sup>cx</sup>. The result, r<sub>0</sub>=a-W<sub>0</sub>(-bce<sup>ac</sup>)/c, is also determined and all three meet at the appropriate point:</div><div><img src=\"modelica://GNU_ScientificLibrary/Examples/specfunc/expTranscendEq.png\"></div><div><br></div><div>This type of solver is coded into the \"SolveExpTranscend\" block under the \"NumericalInversions\" package. The use of this block on the far right reveals that there is a 2nd solution from W<sub>-1</sub> at x~35.</div></body></html>"));
 end ExpTranscendEqs;

@@ -3,9 +3,10 @@ Bessel_2ndKind
 Bessel_Jzeros
 Bessel_Yzeros
 SphBessel_jzeros
+ErfComparison
 FermiDiracIntegrals_Complete
 ElectronDegPres
-CoaxialDirichlet
 LargeAmplitudePendulum
 ExpTranscendEqs
 DE_Usage
+CoaxialDirichlet

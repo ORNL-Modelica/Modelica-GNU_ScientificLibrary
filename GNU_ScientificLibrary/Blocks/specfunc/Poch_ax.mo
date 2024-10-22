@@ -8,5 +8,5 @@ equation
           extent={{-78,18},{70,-12}},
           lineColor={0,0,0},
           textString="(a)_x")}),
-          Documentation(info = "<html><head></head><body><div><img src=\"modelica://GNU_ScientificLibrary/Blocks/specfunc/poch.png\"></div></body></html>"));
+          Documentation(info = "<html><head></head><body><div>Pochhammer symbol, (a)<sub>x</sub>:</div><div><img src=\"modelica://GNU_ScientificLibrary/Blocks/specfunc/poch.png\"></div></body></html>"));
 end Poch_ax;

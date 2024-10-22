@@ -19,6 +19,7 @@ sph_bessel_yl
 legendre_Pl
 sph_harm_Ylm
 hydrogen_Rnl
+fermidirac_Fmhalf
 fermidirac_Fhalf
 fermidirac_F3half
 fermidirac_Fn
