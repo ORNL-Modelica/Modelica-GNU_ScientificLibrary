@@ -30,7 +30,11 @@ airy_Bi
 airy_zeroAi
 airy_zeroBi
 debye_D1
+debye_D2
 debye_D3
+debye_D4
+debye_D5
+debye_D6
 dilog_Li2
 elliptint_K
 elliptint_E

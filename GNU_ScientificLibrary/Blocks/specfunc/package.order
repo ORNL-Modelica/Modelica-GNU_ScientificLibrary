@@ -33,7 +33,11 @@ Airy_Bi
 Airy_zeroAi
 Airy_zeroBi
 Debye_D1
+Debye_D2
 Debye_D3
+Debye_D4
+Debye_D5
+Debye_D6
 Dilog_Li2
 ElliptInt_K
 ElliptInt_E
