@@ -14,5 +14,5 @@ algorithm
   f := GNU_ScientificLibrary.Functions.integration.integrand(x,n_par,par);
 annotation(
     Icon(graphics = {Text(extent = {{-60, 60}, {60, -60}}, textString = "f(x)")}),
-  Documentation(info = "<html><head></head><body><div>This block provides the currently-defined integrand, f(x):&nbsp;</div><div><br></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /<sup>b</sup>&nbsp;<br><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>I = | f(x) dx&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /<sub>a</sub>&nbsp;</div><div><br></div><div>The integrand function is compiled externally beforehand (via 'CreateIntegrand' or a duplicate) so that it may be accessed by GSL integration routines.</div></body></html>"));
+  Documentation(info = "<html><head></head><body><div>This block provides the currently-defined integrand, f(x):&nbsp;</div><br><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>I = ∫<sub>a</sub><sup>b</sup> f(x) dx&nbsp;</div><div><br></div><div>The integrand function is compiled externally beforehand (via 'CreateIntegrand' or a duplicate) so that it may be accessed by GSL integration routines.</div></body></html>"));
 end Integrand;

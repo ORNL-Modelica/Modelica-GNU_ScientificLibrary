@@ -13,7 +13,7 @@ model UnfairComparison "Comparison of GSL and Modelica integration routines"
     Placement(transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Math.Division iiratio annotation(
     Placement(transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}})));
-    
+  //
   function func
     extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;
     input Integer n_p;
@@ -21,7 +21,7 @@ model UnfairComparison "Comparison of GSL and Modelica integration routines"
   algorithm
     y := GNU_ScientificLibrary.Functions.integration.integrand(u,n_p,p);
   end func;
-
+  //
   Blocks.integration.QAGS_quadrature qAGS_quad(n_par = n_par)  annotation(
     Placement(transformation(origin = {10, -30}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Constant p_const[n_par](k = {1.0})  annotation(
@@ -53,7 +53,7 @@ equation
     Line(points = {{-49, -36}, {-6, -36}, {-6, 24}, {-2, 24}}, color = {0, 0, 127}));
   annotation(
     preferredView = "diagram",
-    Documentation(info = "<html><head></head><body><div>Example integral:&nbsp;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp;/<sup>1</sup>&nbsp;</div><div>I(a) = | x<sup>-1/2</sup> ln(x) dx&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp;/<sub>a</sub>&nbsp;</div><div><br></div><div>using the GSL QAGS routine and Modelica.Math.Nonlinear.quadratureLobatto(). Several values of a from 0.1 to 10<sup>-6</sup> are explored and the integral is reevaluated for each one. The ratio of the results from the two methods is also calculated for comparison. As the integrand contains a singularity at x=0, the integration is stopped at a=10<sup>-6</sup>. Only the QAGS result is evaluated for the full range (qAGS_quad0.y = I(0) = -4). The Lobatto routine will hang or crash for values of a &lt; 10<sup>-6</sup>.</div><div><br></div>IMPORTANT!!!: The integrand-setup model 'CreateIntegrand2' (or a duplicate) must be run before using GSL integration routines within a larger Modelica model (like this one). (Alternatively, one could edit integrand.c directly and then compile \"by hand\" in a command window:<div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>gcc -fPIC -c integrand.c integration_mi.c</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>gcc -shared integration.o integration_mi.o -o libgsl_integration_MI.so &nbsp;[.dll for windows])</div><div><br><div><img src=\"modelica://GNU_ScientificLibrary/Examples/integration/qags_mod_compar.png\"></div><div><div><br></div></div></div></body></html>"),
+    Documentation(info = "<html><head></head><body><div>Example integral:&nbsp;</div><div><br></div><div>I(a) = ∫<sub>a</sub><sup>1</sup> x<sup>-1/2</sup> ln(x) dx&nbsp;</div><div><br></div><div>using the GSL QAGS routine and Modelica.Math.Nonlinear.quadratureLobatto(). Several values of a from 0.1 to 10<sup>-6</sup> are explored and the integral is reevaluated for each one. The ratio of the results from the two methods is also calculated for comparison. As the integrand contains a singularity at x=0, the integration is stopped at a=10<sup>-6</sup>. Only the QAGS result is evaluated for the full range (qAGS_quad0.y = I(0) = -4). The Lobatto routine will hang or crash for values of a &lt; 10<sup>-6</sup>.</div><div><br></div>IMPORTANT!!!: The integrand-setup model 'CreateIntegrand2' (or a duplicate) must be run before using GSL integration routines within a larger Modelica model (like this one). (Alternatively, one could edit integrand.c directly and then compile \"by hand\" in a command window:<div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>gcc -fPIC -c integrand.c integration_mi.c</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>gcc -shared integration.o integration_mi.o -o libgsl_integration_MI.so &nbsp;[.dll for windows])</div><div><br><div><img src=\"modelica://GNU_ScientificLibrary/Examples/integration/qags_mod_compar.png\"></div><div><div><br></div></div></div></body></html>"),
     experiment(StartTime = 0, StopTime = 0.1, Tolerance = 1e-06, Interval = 0.001),
     Diagram(coordinateSystem(extent = {{-80, 40}, {60, -60}})));
 end UnfairComparison;
