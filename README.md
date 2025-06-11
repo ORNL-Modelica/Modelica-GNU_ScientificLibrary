@@ -26,9 +26,9 @@ Wherever possible, it is the goal here that the user need not be forced to leave
 
 For example, an integrand-setup model (e.g., 'ExampleIntegral.CreateIntegrand') must be run before using GSL integration routines within a larger Modelica model. To create another integrand, simply duplicate one of the example models and change the String 'C_integrand' for the desired mathematical function in standard C-syntax. This setup model then needs to be "simulated" (it actually only copies/creates files, compiles and archives them) before the simulation of a larger model. The larger model may then include multiple uses of the relevant 'integrand' (e.g., in qag or other GSL integration routines). Alternatively, one could edit integrand.c directly and then compile "by hand" in a command window:
 
-gcc -fPIC -c integrand.c integration_mi.c 
+	gcc -fPIC -c integrand.c integration_mi.c 
 	
-gcc -shared integration.o integration_mi.o -lm -llibgsl -o libgsl_integration_MI.so 
+	gcc -shared integration.o integration_mi.o -lm -llibgsl -o libgsl_integration_MI.so 
 
 	[.dll for windows] 
 	
